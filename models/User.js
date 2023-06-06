@@ -3,7 +3,8 @@ import moment from "moment";
 
 const userSchema = new moongose.Schema(
   {
-    userName: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     confirmPassword: { type: String, required: true },

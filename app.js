@@ -12,6 +12,7 @@ import mongoSanitize from "express-mongo-sanitize";
 //Custom Modules,Packages,Configs,Etc
 import connectionDatabase from "./helpers/connectionDatabase/connectionDatabase.js";
 import corsOption from "./helpers/cors/corsOption.js";
+import { initRoutes } from "./routes/index.routes.js";
 
 const envFile =
   process.env.NODE_ENV === "production"
@@ -33,6 +34,7 @@ app.use(mongoSanitize());
 app.use(cors(corsOption));
 
 
+initRoutes(app);
 
 app.get("/", (req, res) => {
     res.send("Health Check");

@@ -1,8 +1,8 @@
 import User from "../../models/User.js";
 import bcrypt from "bcryptjs";
 import loginValidationSchema from "../../validations/authValidations/loginValidationSchema.js";
-import { cookieOptions } from "../../helpers/token/cookieOptions.js";
-import { generateToken } from "../../helpers/token/generateToken.js";
+import { cookieOptions } from "../../helpers/tokens/cookieOptions.js";
+import { generateToken } from "../../helpers/tokens/generateToken.js";
 
 const loginUser = async (req, res) => {
   try {
