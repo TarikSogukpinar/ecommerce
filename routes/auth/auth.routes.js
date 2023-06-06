@@ -10,5 +10,8 @@ router.post("/register", registerController.registerUser);
 router.post("/login", loginController.loginUser);
 router.get("/logout", verifyToken, logoutController.logoutUser);
 
+router.get("/check", (req, res) => {
+  res.json("Health Check");
+});
 
 export default router;

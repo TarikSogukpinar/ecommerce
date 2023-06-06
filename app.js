@@ -38,6 +38,8 @@ app.get("/", (req, res) => {
   res.send("Health Check");
 });
 
+
+
 await connectionMongoDbDatabase();
 
 export const PORT = process.env.PORT || 5000;
