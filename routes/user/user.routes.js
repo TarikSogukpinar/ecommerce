@@ -12,5 +12,4 @@ router.put(
 );
 router.post("/reset-password", passwordResetController.passwordReset);
 
-
 export default router;

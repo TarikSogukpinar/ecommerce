@@ -1,11 +1,12 @@
 import User from "../../models/User.js";
 import jwt from "jsonwebtoken";
+import sendEmail from "../../helpers/sendEmail/sendEmail.js";
 import passwordResetValidationSchema from "../../validations/userValidations/passwordResetValidationSchema.js";
 
 const passwordReset = async (req, res) => {
   try {
     const { error } = passwordResetValidationSchema(req.body);
-    
+
     if (error) {
       return res.status(400).send({ message: error.details[0].message });
     }
@@ -21,7 +22,7 @@ const passwordReset = async (req, res) => {
       expiresIn: "5m",
     });
 
-    const url = `http://localhost:3000/password-reset/${user._id}/${token}/`;
+    const url = `http://localhost:5000/password-reset/${user._id}/${token}/`;
     await sendEmail(user.email, "Password Reset", url);
 
     res.status(200).send({
