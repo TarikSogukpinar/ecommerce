@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev:development": "cross-env NODE_ENV=development nodemon index.js",
+    "dev:production": "cross-env NODE_ENV=production nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,12 +20,17 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
+    "express-status-monitor": "^1.3.4",
     "helmet": "^7.0.0",
     "joi": "^17.9.2",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^9.0.0",
     "moment": "^2.29.4",
-    "mongoose": "^7.2.2"
+    "mongoose": "^7.2.2",
+    "pm2": "^5.3.0",
+    "redis": "^4.6.7",
+    "swagger-ui-express": "^4.6.3",
+    "winston": "^3.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
