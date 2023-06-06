@@ -5,7 +5,7 @@ const logoutUser = async (req, res) => {
       .status(200)
       .json({ message: "Logout Successful." });
   } catch (error) {
-    res.status(500).json({ error: true, message: error.message });
+    return res.status(500).json({ error: true, message: error.message });
   }
 };
 

@@ -1,6 +1,6 @@
 import User from "../../models/User.js";
 import bcrypt from "bcryptjs";
-import updatePasswordValidationSchema from "../../validations/authValidations/updatePasswordValidationSchema.js";
+import updatePasswordValidationSchema from "../../validations/userValidations/updatePasswordValidationSchema.js";
 
 const updatePassword = async (req, res) => {
   try {
@@ -9,7 +9,9 @@ const updatePassword = async (req, res) => {
     const { error } = updatePasswordValidationSchema(req.body);
 
     if (error) {
-      res.status(400).json({ error: true, message: error.details[0].message });
+      return res
+        .status(400)
+        .json({ error: true, message: error.details[0].message });
     }
     const saltPassword = await bcrypt.genSaltSync(10);
     const hashPassword = await bcrypt.hashSync(password, saltPassword);
@@ -21,8 +23,9 @@ const updatePassword = async (req, res) => {
     const user = await User.findById(id);
 
     if (!user) {
-      return res.status(404).json({ error: true, message: error.message });
+      return res.status(404).json({ error: true, message: "User Id Not Found!" });
     }
+
     const oldPassword = await bcrypt.compareSync(password, user.password);
     const oldConfirmPassword = await bcrypt.compareSync(
       confirmPassword,
@@ -43,6 +46,7 @@ const updatePassword = async (req, res) => {
       });
     }
 
+  
     const data = await User.findByIdAndUpdate(
       id,
       {
@@ -54,11 +58,11 @@ const updatePassword = async (req, res) => {
     res.status(200).json({
       error: false,
       data: `User id: '${data._id}'`,
-      message: `Password is updated for ${data.userName}`,
+      message: `Password is updated for ${data.firstName} ${data.lastName}`,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: true, message: error.message });
+    return res.status(500).json({ error: true, message: error.message });
   }
 };
 
