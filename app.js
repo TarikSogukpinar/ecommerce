@@ -7,6 +7,8 @@ import compression from "compression";
 import cors from "cors";
 import xss from "xss-clean";
 import mongoSanitize from "express-mongo-sanitize";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swaggerOptions.js";
 
 //Custom Modules,Packages,Configs,Etc
 import connectionMongoDbDatabase from "./database/connectionMongoDbDatabase.js";
@@ -31,14 +33,13 @@ app.use(compression());
 app.use(xss());
 app.use(mongoSanitize());
 app.use(cors(corsOption));
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.disable('x-powered-by')
 initRoutes(app);
 
 app.get("/", (req, res) => {
   res.send("Health Check");
 });
-
-
 
 await connectionMongoDbDatabase();
 
