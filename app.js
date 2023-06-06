@@ -8,9 +8,8 @@ import cors from "cors";
 import xss from "xss-clean";
 import mongoSanitize from "express-mongo-sanitize";
 
-
 //Custom Modules,Packages,Configs,Etc
-import connectionDatabase from "./helpers/connectionDatabase/connectionDatabase.js";
+import connectionMongoDbDatabase from "./database/connectionMongoDbDatabase.js";
 import corsOption from "./helpers/cors/corsOption.js";
 import { initRoutes } from "./routes/index.routes.js";
 
@@ -33,14 +32,13 @@ app.use(xss());
 app.use(mongoSanitize());
 app.use(cors(corsOption));
 
-
 initRoutes(app);
 
 app.get("/", (req, res) => {
-    res.send("Health Check");
+  res.send("Health Check");
 });
 
-await connectionDatabase();
+await connectionMongoDbDatabase();
 
 export const PORT = process.env.PORT || 5000;
 export default app;
