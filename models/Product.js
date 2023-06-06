@@ -1,14 +1,20 @@
-import moongose from "mongoose";
+import mongoose from "mongoose";
 import moment from "moment";
+import { uuid } from "uuidv4";
 
-const productSchema = new moongose.Schema(
+const productSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    name: {
+    productId: {
+      type: String,
+      default: uuid,
+      unique: true,
+    },
+    productName: {
       type: String,
       required: true,
     },
@@ -45,14 +51,14 @@ const productSchema = new moongose.Schema(
         review: String,
       },
     ],
-    date: {
-      type: Date,
+    createdAt: {
+      type: String,
       default: moment().format("MMMM Do YYYY, h:mm:ss a"),
     },
   },
   { timestamps: true, versionKey: false }
 );
 
-const Product = new moongose.model("Product", productSchema);
+const Product = new mongoose.model("Product", productSchema);
 
 export default Product;

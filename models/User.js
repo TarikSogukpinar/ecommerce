@@ -1,7 +1,7 @@
-import moongose from "mongoose";
+import mongoose from "mongoose";
 import moment from "moment";
 
-const userSchema = new moongose.Schema(
+const userSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -17,6 +17,6 @@ const userSchema = new moongose.Schema(
   { timestamps: true, versionKey: false }
 );
 
-const User = new moongose.model("user", userSchema);
+const User = new mongoose.model("user", userSchema);
 
 export default User;
