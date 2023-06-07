@@ -7,7 +7,11 @@
   "scripts": {
     "dev:development": "cross-env NODE_ENV=development nodemon index.js",
     "dev:production": "cross-env NODE_ENV=production nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "keywords": [],
   "author": "",
@@ -42,8 +46,11 @@
     "@babel/preset-env": "^7.22.4",
     "babel-jest": "^29.5.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0",
     "jest": "^29.5.0",
     "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
     "supertest": "^6.3.3"
   }
 }

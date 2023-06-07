@@ -1,12 +1,9 @@
 const logoutUser = async (req, res) => {
   try {
-    res
-      .clearCookie("token")
-      .status(200)
-      .json({ message: "Logout Successful." });
+    res.clearCookie('token').status(200).json({ message: 'Logout Successful.' })
   } catch (error) {
-    return res.status(500).json({ error: true, message: error.message });
+    return res.status(500).json({ error: true, message: error.message })
   }
-};
+}
 
-export default { logoutUser };
+export default { logoutUser }

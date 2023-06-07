@@ -1,5 +1,5 @@
-import Joi from "joi";
-import JoiPasswordComplexity from "joi-password-complexity";
+import Joi from 'joi'
+import JoiPasswordComplexity from 'joi-password-complexity'
 
 const updatePasswordValidationSchema = (body) => {
   const schema = Joi.object({
@@ -9,14 +9,14 @@ const updatePasswordValidationSchema = (body) => {
       lowerCase: 1,
       upperCase: 1,
       requirementCount: 1,
-    }).label("Password"),
+    }).label('Password'),
     confirmPassword: Joi.any()
-      .equal(Joi.ref("password"))
+      .equal(Joi.ref('password'))
       .required()
-      .label("Confirm password")
-      .messages({ "any.only": "{{#label}} does not match" }),
-  });
-  return schema.validate(body);
-};
+      .label('Confirm password')
+      .messages({ 'any.only': '{{#label}} does not match' }),
+  })
+  return schema.validate(body)
+}
 
-export default updatePasswordValidationSchema;
+export default updatePasswordValidationSchema

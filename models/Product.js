@@ -1,12 +1,12 @@
-import mongoose from "mongoose";
-import moment from "moment";
-import uuidv4 from "uuid";
+import mongoose from 'mongoose'
+import moment from 'moment'
+import uuidv4 from 'uuid'
 
 const productSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     productId: {
@@ -53,12 +53,12 @@ const productSchema = new mongoose.Schema(
     ],
     createdAt: {
       type: String,
-      default: moment().format("MMMM Do YYYY, h:mm:ss a"),
+      default: moment().format('MMMM Do YYYY, h:mm:ss a'),
     },
   },
-  { timestamps: true, versionKey: false }
-);
+  { timestamps: true, versionKey: false },
+)
 
-const Product = new mongoose.model("Product", productSchema);
+const Product = new mongoose.model('Product', productSchema)
 
-export default Product;
+export default Product

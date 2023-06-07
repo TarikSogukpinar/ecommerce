@@ -1,25 +1,25 @@
-import { Router } from "express";
-import { verifyToken } from "../../middleware/verifyTokens/verifyTokens.js";
-import { verifyRoles } from "../../middleware/verifyRoles/verifyRoles.js";
-import productController from "../../controllers/product/productController.js";
-const router = Router();
+import { Router } from 'express'
+import { verifyToken } from '../../middleware/verifyTokens/verifyTokens.js'
+import { verifyRoles } from '../../middleware/verifyRoles/verifyRoles.js'
+import productController from '../../controllers/product/productController.js'
+const router = Router()
 
-router.get("/getAllProducts", verifyToken, productController.getAllProducts);
+router.get('/getAllProducts', verifyToken, productController.getAllProducts)
 
-router.get("/searchProducts", verifyToken, productController.searchProducts);
+router.get('/searchProducts', verifyToken, productController.searchProducts)
 
 router.post(
-  "/createProduct",
+  '/createProduct',
   verifyToken,
-  verifyRoles("seller"),
-  productController.createProduct
-);
+  verifyRoles('seller'),
+  productController.createProduct,
+)
 
 router.put(
-  "/updateProduct/:id",
+  '/updateProduct/:id',
   verifyToken,
-  verifyRoles("seller"),
-  productController.updateProduct
-);
+  verifyRoles('seller'),
+  productController.updateProduct,
+)
 
-export default router;
+export default router

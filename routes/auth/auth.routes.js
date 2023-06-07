@@ -1,10 +1,10 @@
-import { Router } from "express";
-import loginController from "../../controllers/auth/loginController.js";
-import registerController from "../../controllers/auth/registerController.js";
-import logoutController from "../../controllers/auth/logoutController.js";
-import { verifyToken } from "../../middleware/verifyTokens/verifyTokens.js";
+import { Router } from 'express'
+import loginController from '../../controllers/auth/loginController.js'
+import registerController from '../../controllers/auth/registerController.js'
+import logoutController from '../../controllers/auth/logoutController.js'
+import { verifyToken } from '../../middleware/verifyTokens/verifyTokens.js'
 
-const router = Router();
+const router = Router()
 
 /**
  * @swagger
@@ -37,7 +37,7 @@ const router = Router();
  *       200:
  *         description: Successfully registered
  */
-router.post("/register", registerController.registerUser);
+router.post('/register', registerController.registerUser)
 
 /**
  * @swagger
@@ -61,7 +61,7 @@ router.post("/register", registerController.registerUser);
  *       200:
  *         description: Successfully logged in
  */
-router.post("/login", loginController.loginUser);
+router.post('/login', loginController.loginUser)
 
 /**
  * @swagger
@@ -79,7 +79,7 @@ router.post("/login", loginController.loginUser);
  *       200:
  *         description: Successfully logged out
  */
-router.get("/logout", verifyToken, logoutController.logoutUser);
+router.get('/logout', verifyToken, logoutController.logoutUser)
 
 /**
  * @swagger
@@ -90,8 +90,8 @@ router.get("/logout", verifyToken, logoutController.logoutUser);
  *       200:
  *         description: Service is up
  */
-router.get("/check", (req, res) => {
-  res.json("Health Check");
-});
+router.get('/check', (req, res) => {
+  res.json('Health Check')
+})
 
-export default router;
+export default router

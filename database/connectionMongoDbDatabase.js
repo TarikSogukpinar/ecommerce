@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const connectionDatabase = async () => {
-  const connectionString = process.env.MONGO_URI;
+  const connectionString = process.env.MONGO_URI
   try {
     mongoose
       .connect(connectionString, {
@@ -10,13 +10,13 @@ const connectionDatabase = async () => {
       })
       .then((res) => console.log(`MongoDB Connected: ${res.connection.name}`))
       .catch((error) => {
-        console.error(`Error: ${error.message}`);
-        process.exit(1);
-      });
+        console.error(`Error: ${error.message}`)
+        process.exit(1)
+      })
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    process.exit(1);
+    console.error(`Error: ${error.message}`)
+    process.exit(1)
   }
-};
+}
 
-export default connectionDatabase;
+export default connectionDatabase
