@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     confirmPassword: { type: String, required: true },
-    roles: { type: String, default: "user", enum: ["user", "admin"] },
+    roles: { type: String, default: "user", enum: ["user", "seller", "admin"] },
     createdAt: {
       type: String,
       default: moment().format("MMMM Do YYYY, h:mm:ss a"),

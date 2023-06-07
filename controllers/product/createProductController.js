@@ -10,7 +10,7 @@ const createProduct = async (req, res) => {
         .status(400)
         .json({ error: true, message: error.details[0].message });
     }
-
+   
     req.body.userId = req.user.userId;
     const product = new Product(req.body);
 
