@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import moment from "moment";
-import { uuid } from "uuidv4";
+import uuidv4 from "uuid";
 
 const productSchema = new mongoose.Schema(
   {
@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema(
     },
     productId: {
       type: String,
-      default: uuid,
+      default: uuidv4,
       unique: true,
     },
     productName: {
