@@ -1,4 +1,3 @@
-import express from 'express'
 import authRoutes from './auth/auth.routes.js'
 import userRoutes from './user/user.routes.js'
 import productRoutes from './product/product.routes.js'

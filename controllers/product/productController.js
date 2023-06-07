@@ -99,6 +99,8 @@ const searchProducts = async (req, res) => {
         .json({ error: true, message: error.details[0].message })
     }
 
+    let query = {}
+
     const products = await Product.find(query)
 
     if (products.length === 0) {
