@@ -8,13 +8,14 @@ import cors from 'cors'
 import xss from 'xss-clean'
 import mongoSanitize from 'express-mongo-sanitize'
 import swaggerUi from 'swagger-ui-express'
-import swaggerDocument from './swaggerOptions.js'
 
 //Custom Modules,Packages,Configs,Etc
 import connectionMongoDbDatabase from './database/connectionMongoDbDatabase.js'
 import corsOption from './helpers/cors/corsOption.js'
 import { initRoutes } from './routes/index.routes.js'
 import notFound from './errors/notFound.js'
+import swaggerDocument from './swaggerOptions.js'
+import { errorHandler } from './middleware/errorHandler/errorHandler.js'
 
 const envFile =
   process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
@@ -36,9 +37,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.disable('x-powered-by')
 initRoutes(app)
 
-
-
 app.use(notFound)
+app.use(errorHandler)
 await connectionMongoDbDatabase()
 
 export const PORT = process.env.PORT || 5000
