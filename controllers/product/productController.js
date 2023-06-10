@@ -100,7 +100,7 @@ const updateProduct = async (req, res) => {
   })
 }
 
-//search on progress
+
 const searchProducts = async (req, res) => {
   const { error } = searchProductValidationSchema(req.query)
 
@@ -110,9 +110,14 @@ const searchProducts = async (req, res) => {
       .json({ error: true, message: error.details[0].message })
   }
 
-  let query = {}
-
-  const products = await Product.find(query)
+  let products = await Product.find({
+    $or: [
+      { productName: { $regex: req.params.key } },
+      { description: { $regex: req.params.key } },
+      { category: { $regex: req.params.key } },
+      { brand: { $regex: req.params.key } },
+    ],
+  })
 
   if (products.length === 0) {
     return res.status(StatusCodes.NOT_FOUND).json({
@@ -127,6 +132,32 @@ const searchProducts = async (req, res) => {
   })
 }
 
+const getCheapestFiveProducts = async (req, res) => {
+  const product = await Product.find({}).sort({ price: 1 }).limit(5)
+
+  if (product) {
+    return res.status(StatusCodes.OK).json({ error: false, product: product })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    products: product,
+  })
+}
+
+const getExpensiveFiveProducts = async (req, res) => {
+  const product = await Product.find({}).sort({ price: -1 }).limit(5)
+
+  if (product) {
+    return res.status(StatusCodes.OK).json({ error: false, product: product })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    products: product,
+  })
+}
+
 export default {
   getProductById,
   getAllProducts,
@@ -134,4 +165,6 @@ export default {
   updateProduct,
   searchProducts,
   deleteProductById,
+  getCheapestFiveProducts,
+  getExpensiveFiveProducts,
 }

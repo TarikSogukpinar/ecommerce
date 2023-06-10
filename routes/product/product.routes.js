@@ -19,7 +19,7 @@ router.get(
 )
 
 router.get(
-  '/searchProducts',
+  '/searchProducts/:key',
   verifyToken,
   tryCatch(productController.searchProducts),
 )
@@ -43,6 +43,16 @@ router.delete(
   verifyToken,
   verifyRoles('seller', 'admin'),
   tryCatch(productController.deleteProductById),
+)
+
+router.get(
+  '/getCheapestFiveProducts',
+  tryCatch(productController.getCheapestFiveProducts),
+)
+
+router.get(
+  '/getExpensiveFiveProducts',
+  tryCatch(productController.getExpensiveFiveProducts),
 )
 
 export default router
