@@ -14,6 +14,7 @@ import swaggerDocument from './swaggerOptions.js'
 import connectionMongoDbDatabase from './database/connectionMongoDbDatabase.js'
 import corsOption from './helpers/cors/corsOption.js'
 import { initRoutes } from './routes/index.routes.js'
+import notFound from './errors/notFound.js'
 
 const envFile =
   process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
@@ -35,10 +36,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.disable('x-powered-by')
 initRoutes(app)
 
-app.get('/', (req, res) => {
-  res.send('Health Check')
-})
 
+
+app.use(notFound)
 await connectionMongoDbDatabase()
 
 export const PORT = process.env.PORT || 5000

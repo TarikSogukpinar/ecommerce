@@ -1,6 +1,7 @@
 import User from '../../models/User.js'
 import bcrypt from 'bcryptjs'
 import registerValidationSchema from '../../validations/authValidations/registerValidationSchema.js'
+import { StatusCodes } from 'http-status-codes'
 
 const registerUser = async (req, res) => {
   const { email, password, confirmPassword } = req.body
@@ -8,7 +9,7 @@ const registerUser = async (req, res) => {
   const { error } = registerValidationSchema(req.body)
 
   if (error) {
-    res.status(400).json({
+    res.status(StatusCodes.BAD_REQUEST).json({
       error: true,
       message: error.details[0].message,
     })
@@ -16,7 +17,7 @@ const registerUser = async (req, res) => {
 
   const user = await User.findOne({ email })
   if (user) {
-    return res.status(400).json({
+    return res.status(StatusCodes.BAD_REQUEST).json({
       error: true,
       message: 'You cannot register, Email already exist',
     })
@@ -34,7 +35,7 @@ const registerUser = async (req, res) => {
 
   await data.save()
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     error: false,
     data: data,
     message: 'Account Created Succesfully!',

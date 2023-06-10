@@ -7,10 +7,5 @@ export function initRoutes(app) {
   app.use('/api/user', userRoutes)
   app.use('/api/product', productRoutes)
 
-  app.all('*', (req, res) => {
-    res.status(404).json({
-      error: true,
-      message: 'Route not found',
-    })
-  })
+ 
 }
