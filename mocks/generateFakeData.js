@@ -2,48 +2,53 @@ import { faker } from '@faker-js/faker'
 import Product from '../models/Product.js'
 import User from '../models/User.js'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+const envFile =
+  process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+dotenv.config({
+  path: envFile,
+})
 
 async function createFakeData() {
-  await mongoose.connect(process.env.MONGO_URI, {
+  const connectionString = process.env.MONGO_URI
+  await mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
 
-  for (let i = 0; i < 200; i++) {
-    const user = new User({
-      firstName: faker.person.fullName(),
-      lastName: faker.person.lastName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-      confirmPassword: faker.internet.password(),
-      roles: 'seller',
-      createdData: faker.date.past(),
-    })
+  try {
+    for (let i = 0; i < 500; i++) {
+      const user = new User({
+        firstName: faker.person.fullName(),
+        lastName: faker.person.lastName(),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        confirmPassword: faker.internet.password(),
+        roles: 'seller',
+        createdData: faker.date.past(),
+      })
 
-    try {
+      const product = new Product({
+        productName: faker.commerce.productName(),
+        description: faker.commerce.productDescription(),
+        price: faker.commerce.price(),
+        category: faker.commerce.department(),
+        brand: faker.commerce.productMaterial(),
+        inStock: faker.datatype.boolean(),
+        inventory: faker.number.int(),
+        rating: faker.number.int(),
+        createdAt: faker.date.past(),
+        userId: user._id,
+      })
+
       await user.save()
-    } catch (error) {
-      console.log('Error: ', error)
-    }
-
-    const product = new Product({
-      productName: faker.commerce.productName(),
-      description: faker.commerce.productDescription(),
-      price: faker.commerce.price(),
-      category: faker.commerce.department(),
-      brand: faker.commerce.productMaterial(),
-      inStock: faker.datatype.boolean(),
-      inventory: faker.number.int(),
-      rating: faker.number.int(),
-      createdAt: faker.date.past(),
-      userId: user._id,
-    })
-
-    try {
       await product.save()
-    } catch (error) {
-      console.log('Error: ', error)
     }
+    console.log('Data successfully created!')
+    process.exit(1)
+  } catch (error) {
+    console.log(error)
   }
 }
 
