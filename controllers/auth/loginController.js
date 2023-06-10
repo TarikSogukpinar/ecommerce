@@ -5,7 +5,7 @@ import { cookieOptions } from '../../helpers/tokens/cookieOptions.js'
 import { generateToken } from '../../helpers/tokens/generateToken.js'
 
 const loginUser = async (req, res) => {
-  try {
+
     const { error } = loginValidationSchema(req.body)
     if (error) {
       return res
@@ -35,15 +35,12 @@ const loginUser = async (req, res) => {
 
     res.cookie('token', token, cookieOptions)
 
-    res.status(200).json({
-      data: user,
-      message: 'Login Succesfully!',
-      tokens: token,
-    })
-  } catch (error) {
-    console.log(error)
-    return res.status(500).json({ error: true, message: error.message })
-  }
+   return res.status(200).json({
+     data: user,
+     message: 'Login Succesfully!',
+     tokens: token,
+   })
+ 
 }
 
 export default { loginUser }
