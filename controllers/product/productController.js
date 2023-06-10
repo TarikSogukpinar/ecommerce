@@ -13,12 +13,39 @@ const getAllProducts = async (req, res) => {
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort('-createdAt')
-  res.json({
+  return res.json({
     products: allProducts,
     page,
     pages: Math.ceil(count / pageSize),
     total: count,
   })
+}
+
+const getProductById = async (req, res) => {
+  const id = req.params.id
+  const product = await Product.findById(id)
+
+  if (product) {
+    return res.status(StatusCodes.OK).json({ error: false, product: product })
+  }
+  return res
+    .status(StatusCodes.NOT_FOUND)
+    .json({ error: true, message: 'Product not found!' })
+}
+
+const deleteProductById = async (req, res) => {
+  const id = req.params.id
+
+  const product = await Product.findByIdAndDelete(id)
+
+  if (product) {
+    return res
+      .status(StatusCodes.OK)
+      .json({ error: false, message: 'Product deleted successfully!' })
+  }
+  return res
+    .status(StatusCodes.NOT_FOUND)
+    .json({ error: true, message: 'Product not found!' })
 }
 
 const createProduct = async (req, res) => {
@@ -35,7 +62,7 @@ const createProduct = async (req, res) => {
 
   const savedProduct = await product.save()
 
-  res.status(StatusCodes.OK).json({
+  return res.status(StatusCodes.OK).json({
     error: false,
     message: 'Product Created Succesfully!',
     savedProduct: savedProduct,
@@ -66,16 +93,15 @@ const updateProduct = async (req, res) => {
       .json({ error: true, message: 'Product not found!' })
   }
 
-  res.status(StatusCodes.OK).json({
+  return res.status(StatusCodes.OK).json({
     error: false,
     message: 'Product updated successfully!',
     updatedProduct: updatedProduct,
   })
 }
 
+//search on progress
 const searchProducts = async (req, res) => {
-  //search on progress
-
   const { error } = searchProductValidationSchema(req.query)
 
   if (error) {
@@ -95,10 +121,17 @@ const searchProducts = async (req, res) => {
     })
   }
 
-  res.status(StatusCodes.OK).json({
+  return res.status(StatusCodes.OK).json({
     error: false,
     products: products,
   })
 }
 
-export default { getAllProducts, createProduct, updateProduct, searchProducts }
+export default {
+  getProductById,
+  getAllProducts,
+  createProduct,
+  updateProduct,
+  searchProducts,
+  deleteProductById,
+}

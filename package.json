@@ -7,6 +7,7 @@
   "scripts": {
     "dev:development": "cross-env NODE_ENV=development nodemon index.js",
     "dev:production": "cross-env NODE_ENV=production nodemon index.js",
+    "generate-fakeData": "cross-env NODE_ENV=development node mocks/generateFakeData.js",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint:check": "eslint .",
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.22.4",
+    "@faker-js/faker": "^8.0.2",
     "babel-jest": "^29.5.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.42.0",
