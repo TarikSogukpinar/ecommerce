@@ -27,7 +27,6 @@ router.get(
 router.post(
   '/createProduct',
   verifyToken,
-  verifyRoles('seller'),
   tryCatch(productController.createProduct),
 )
 

@@ -3,8 +3,7 @@ import Product from '../../models/Product.js'
 import { StatusCodes } from 'http-status-codes'
 
 const addToCart = async (req, res) => {
-  const { id } = req.params
-  const user = await User.findById(id)
+  const user = await User.findById(req.params.userId)
   const product = await Product.findById(req.params.productId)
 
   if (!user) {
@@ -14,7 +13,7 @@ const addToCart = async (req, res) => {
     })
   }
 
-  if (product) {
+  if (!product) {
     return res.status(StatusCodes.NOT_FOUND).json({
       error: true,
       message: 'Product not found!',
@@ -40,8 +39,7 @@ const addToCart = async (req, res) => {
 }
 
 const getUserCart = async (req, res) => {
-  const { id } = req.params
-  const user = await User.findById(id).populate('cart')
+  const user = await User.findById(req.params.userId).populate('cart')
 
   if (!user) {
     return res.status(StatusCodes.NOT_FOUND).json({
