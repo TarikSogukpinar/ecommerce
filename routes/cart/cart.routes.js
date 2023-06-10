@@ -7,15 +7,27 @@ import { tryCatch } from '../../helpers/utils/tryCatch.js'
 const router = Router()
 
 router.post(
-  '/addToCart/:userId/:productId',
+  '/addToCartItem/:userId/:productId',
   verifyToken,
-  tryCatch(cartController.addToCart),
+  tryCatch(cartController.addToCartItem),
 )
 
 router.get(
   '/getUserCart/:userId',
   verifyToken,
   tryCatch(cartController.getUserCart),
+)
+
+router.delete(
+  '/deleteCartItem/:userId/:productId',
+  verifyToken,
+  tryCatch(cartController.deleteCartItem),
+)
+
+router.delete(
+  '/deleteUserCart/:userId',
+  verifyToken,
+  tryCatch(cartController.deleteUserCart),
 )
 
 export default router
