@@ -100,7 +100,6 @@ const updateProduct = async (req, res) => {
   })
 }
 
-
 const searchProducts = async (req, res) => {
   const { error } = searchProductValidationSchema(req.query)
 

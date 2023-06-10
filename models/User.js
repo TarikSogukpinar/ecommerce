@@ -13,6 +13,12 @@ const userSchema = new mongoose.Schema(
       default: 'user',
       enum: ['user', 'seller', 'admin'],
     },
+    cart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'product',
+      },
+    ],
     createdAt: {
       type: String,
       default: moment().format('MMMM Do YYYY, h:mm:ss a'),
