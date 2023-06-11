@@ -108,7 +108,6 @@ const userAccountDeleted = async (req, res) => {
       .json({ error: true, message: 'User not found' })
   }
 
-
   return res
     .status(StatusCodes.OK)
     .json({ error: false, message: 'User deleted' })
