@@ -1,5 +1,47 @@
 import User from '../../models/User.js'
+import bcrypt from 'bcryptjs'
 import { StatusCodes } from 'http-status-codes'
+import updateUserByIdValidationSchema from '../../validations/adminValidations/updateUserByIdValidationSchema.js'
+import createNewUserValidationSchema from '../../validations/adminValidations/createNewUserValidationSchema.js'
+
+const createNewUser = async (req, res) => {
+  const { email, password, confirmPassword } = req.body
+
+  const { error } = createNewUserValidationSchema(req.body)
+
+  if (error) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ error: true, message: error.details[0].message })
+  }
+
+  const checkUserEmailExist = await User.findOne({ email })
+
+  if (checkUserEmailExist) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      error: true,
+      message: 'User creation failed! Email already exist',
+    })
+  }
+
+  const saltPassword = await bcrypt.genSalt(10)
+  const hashPassword = await bcrypt.hash(password, saltPassword)
+  const hashConfirmPassword = await bcrypt.hash(confirmPassword, saltPassword)
+
+  const newUser = new User({
+    ...req.body,
+    password: hashPassword,
+    confirmPassword: hashConfirmPassword,
+  })
+
+  await newUser.save()
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    message: 'User created successfully!',
+    newUser: newUser,
+  })
+}
 
 const getAllUsers = async (req, res) => {
   const page = Number(req.query.pageNumber) || 1
@@ -39,4 +81,56 @@ const getUserById = async (req, res) => {
   return res.status(StatusCodes.OK).json({ error: false, user: user })
 }
 
-export default { getAllUsers, getUserById }
+const updateUserById = async (req, res) => {
+  const { error } = updateUserByIdValidationSchema(req.body)
+
+  if (error) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ error: true, message: error.details[0].message })
+  }
+
+  const id = req.params.id
+  const updatedUserData = req.body
+
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: id },
+    updatedUserData,
+    { new: true },
+  )
+
+  if (!updatedUser) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ error: true, message: 'User not found!' })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    message: 'User updated successfully!',
+    updateUser: updatedUser,
+  })
+}
+
+const deleteUserById = async (req, res) => {
+  const id = req.params.id
+  const user = await User.findByIdAndDelete(id)
+
+  if (user) {
+    return res
+      .status(StatusCodes.OK)
+      .json({ error: false, message: 'User deleted successfully!' })
+  }
+
+  return res
+    .status(StatusCodes.NOT_FOUND)
+    .json({ error: true, message: 'User not found!' })
+}
+
+export default {
+  createNewUser,
+  getAllUsers,
+  getUserById,
+  updateUserById,
+  deleteUserById,
+}

@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import JoiPasswordComplexity from 'joi-password-complexity'
 
-const registerValidationSchema = (body) => {
+const createNewUserValidationSchema = (body) => {
   const schema = Joi.object({
     firstName: Joi.string().required().min(3).max(50).label('User Name'),
     lastName: Joi.string().required().min(3).max(50).label('Last Name'),
@@ -22,4 +22,4 @@ const registerValidationSchema = (body) => {
   return schema.validate(body)
 }
 
-export default registerValidationSchema
+export default createNewUserValidationSchema

@@ -6,6 +6,12 @@ import { tryCatch } from '../../helpers/utils/tryCatch.js'
 
 const router = Router()
 
+router.post(
+  '/createNewUser',
+  verifyToken,
+  tryCatch(adminController.createNewUser),
+)
+
 router.get(
   '/getAllUsers',
   verifyToken,
@@ -16,7 +22,22 @@ router.get(
 router.get(
   '/getUserById/:id',
   verifyToken,
+  verifyRoles('admin'),
   tryCatch(adminController.getUserById),
+)
+
+router.put(
+  '/updateUserById/:id',
+  verifyToken,
+  verifyRoles('admin'),
+  tryCatch(adminController.updateUserById),
+)
+
+router.delete(
+  '/deleteUserById/:id',
+  verifyToken,
+  verifyRoles('admin'),
+  tryCatch(adminController.deleteUserById),
 )
 
 export default router

@@ -7,6 +7,7 @@ import { StatusCodes } from 'http-status-codes'
 
 const loginUser = async (req, res) => {
   const { error } = loginValidationSchema(req.body)
+
   if (error) {
     return res
       .status(StatusCodes.BAD_REQUEST)
