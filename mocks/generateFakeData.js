@@ -18,13 +18,14 @@ async function createFakeData() {
   })
 
   try {
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 100; i++) {
       const user = new User({
         firstName: faker.person.fullName(),
         lastName: faker.person.lastName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
         confirmPassword: faker.internet.password(),
+        cart: [],
         roles: 'seller',
         createdData: faker.date.past(),
       })
