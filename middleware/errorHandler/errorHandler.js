@@ -19,5 +19,5 @@ export const errorHandler = (error, req, res, next) => {
 
   return res
     .status(StatusCode.INTERNAL_SERVER_ERROR)
-    .send('Something went wrong')
+    .json({ error: true, message: 'Something went wrong' })
 }

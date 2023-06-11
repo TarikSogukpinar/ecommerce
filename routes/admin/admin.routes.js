@@ -9,6 +9,7 @@ const router = Router()
 router.post(
   '/createNewUser',
   verifyToken,
+  verifyRoles('admin'),
   tryCatch(adminController.createNewUser),
 )
 

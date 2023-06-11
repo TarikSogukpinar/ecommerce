@@ -1,6 +1,5 @@
 import { Router } from 'express'
-import passwordResetController from '../../controllers/user/passwordResetController.js'
-import updatePasswordController from '../../controllers/user/updatePasswordController.js'
+import userController from '../../controllers/user/userController.js'
 import { verifyToken } from '../../middleware/verifyTokens/verifyTokens.js'
 import { tryCatch } from '../../helpers/utils/tryCatch.js'
 
@@ -9,8 +8,14 @@ const router = Router()
 router.put(
   '/updatePassword/:id',
   verifyToken,
-  tryCatch(updatePasswordController.updatePassword),
+  tryCatch(userController.updatePassword),
 )
-router.post('/reset-password', tryCatch(passwordResetController.passwordReset))
+router.post('/reset-password', tryCatch(userController.passwordReset))
+
+router.delete(
+  '/userAccountDeleted/:id',
+  verifyToken,
+  tryCatch(userController.userAccountDeleted),
+)
 
 export default router
