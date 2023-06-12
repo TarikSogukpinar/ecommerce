@@ -109,9 +109,24 @@ const updateCategoryById = async (req, res) => {
   })
 }
 
+const deleteCategoryById = async (req, res) => {
+  const id = req.params.id
+  const category = await Category.findByIdAndDelete(id)
+
+  if (category) {
+    return res
+      .status(StatusCodes.OK)
+      .json({ error: false, message: 'Category deleted successfully!' })
+  }
+  return res
+    .status(StatusCodes.NOT_FOUND)
+    .json({ error: true, message: 'Category not found!' })
+}
+
 export default {
   createCategory,
   searchCategory,
   searchCategoryById,
   updateCategoryById,
+  deleteCategoryById,
 }

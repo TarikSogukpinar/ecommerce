@@ -28,4 +28,10 @@ router.put(
   tryCatch(categoryController.updateCategoryById),
 )
 
+router.delete(
+  '/deleteCategoryById/:id',
+  verifyRoles('admin'),
+  tryCatch(categoryController.deleteCategoryById),
+)
+
 export default router

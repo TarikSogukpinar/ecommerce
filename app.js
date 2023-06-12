@@ -8,6 +8,7 @@ import cors from 'cors'
 import xss from 'xss-clean'
 import mongoSanitize from 'express-mongo-sanitize'
 import swaggerUi from 'swagger-ui-express'
+// import { createClient } from 'redis'
 
 //Custom Modules,Packages,Configs,Etc
 import connectionMongoDbDatabase from './database/connectionMongoDbDatabase.js'
@@ -22,6 +23,14 @@ const envFile =
 dotenv.config({
   path: envFile,
 })
+
+// const client = createClient({
+//   url: 'redis://localhost:6379',
+// })
+
+// client.on('error', (err) => console.log('Redis Client Error', err))
+
+// await client.connect().then(() => console.log('Redis Client Connected'))
 
 const app = express()
 
