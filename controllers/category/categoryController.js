@@ -1,5 +1,6 @@
 import Category from '../../models/Category.js'
 import { StatusCodes } from 'http-status-codes'
+import searchCategoryValidationSchema from '../../validations/categoryValidations/searchCategoryValidationSchema.js'
 import createCategoryValidationSchema from '../../validations/categoryValidations/createCategoryValidationSchema.js'
 
 const createCategory = async (req, res) => {
@@ -36,4 +37,34 @@ const createCategory = async (req, res) => {
   })
 }
 
-export default { createCategory }
+const searchCategory = async (req, res) => {
+  const { error } = searchCategoryValidationSchema(req.body)
+  if (error) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ error: true, message: error.details[0].message })
+  }
+
+  let category = await Category.find({
+    $or: [
+      { categoryName: { $regex: new RegExp(req.params.key, 'i') } },
+      { categoryDescription: { $regex: new RegExp(req.params.key, 'i') } },
+    ],
+  })
+
+  if (category.length === 0) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({
+        error: true,
+        message: 'No category found matching the provided query parameters!!',
+      })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    category: category,
+  })
+}
+
+export default { createCategory, searchCategory }

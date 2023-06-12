@@ -122,12 +122,17 @@ const searchProducts = async (req, res) => {
       .json({ error: true, message: error.details[0].message })
   }
 
+  const category = await Category.find({
+    categoryName: { $regex: new RegExp(req.params.key, 'i') },
+  })
+  const categoryIds = category.map((category) => category._id)
+
   let products = await Product.find({
     $or: [
-      { productName: { $regex: req.params.key } },
-      { description: { $regex: req.params.key } },
-      { category: { $regex: req.params.key } },
-      { brand: { $regex: req.params.key } },
+      { productName: { $regex: new RegExp(req.params.key, 'i') } },
+      { description: { $regex: new RegExp(req.params.key, 'i') } },
+      { category: { $in: categoryIds } },
+      { brand: { $regex: new RegExp(req.params.key, 'i') } },
     ],
   })
 

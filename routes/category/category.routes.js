@@ -12,4 +12,10 @@ router.post(
   tryCatch(categoryController.createCategory),
 )
 
+router.get(
+  '/searchCategory/:key',
+  verifyToken,
+  tryCatch(categoryController.searchCategory),
+)
+
 export default router
