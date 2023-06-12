@@ -1,5 +1,6 @@
 import Category from '../../models/Category.js'
 import { StatusCodes } from 'http-status-codes'
+import updateCategoryValidationSchema from '../../validations/categoryValidations/updateCategoryValidationSchema.js'
 import searchCategoryValidationSchema from '../../validations/categoryValidations/searchCategoryValidationSchema.js'
 import createCategoryValidationSchema from '../../validations/categoryValidations/createCategoryValidationSchema.js'
 
@@ -53,12 +54,10 @@ const searchCategory = async (req, res) => {
   })
 
   if (category.length === 0) {
-    return res
-      .status(StatusCodes.NOT_FOUND)
-      .json({
-        error: true,
-        message: 'No category found matching the provided query parameters!!',
-      })
+    return res.status(StatusCodes.NOT_FOUND).json({
+      error: true,
+      message: 'No category found matching the provided query parameters!!',
+    })
   }
 
   return res.status(StatusCodes.OK).json({
@@ -82,4 +81,37 @@ const searchCategoryById = async (req, res) => {
   })
 }
 
-export default { createCategory, searchCategory, searchCategoryById }
+const updateCategoryById = async (req, res) => {
+  const { error } = updateCategoryValidationSchema(req.body)
+
+  if (error) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ error: true, message: error.details[0].message })
+  }
+
+  const updatedCategory = await Category.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+  )
+
+  if (!updatedCategory) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ error: true, message: 'Category not found!' })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    message: 'Category updated successfully!',
+    updatedCategory: updatedCategory,
+  })
+}
+
+export default {
+  createCategory,
+  searchCategory,
+  searchCategoryById,
+  updateCategoryById,
+}

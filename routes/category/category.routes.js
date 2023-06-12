@@ -23,4 +23,9 @@ router.get(
   tryCatch(categoryController.searchCategoryById),
 )
 
+router.put(
+  '/updateCategoryById/:id',
+  tryCatch(categoryController.updateCategoryById),
+)
+
 export default router
