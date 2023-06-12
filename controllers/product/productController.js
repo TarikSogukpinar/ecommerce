@@ -6,41 +6,67 @@ import searchProductValidationSchema from '../../validations/productValidations/
 import { StatusCodes } from 'http-status-codes'
 import { initRedisClient } from '../../helpers/cache/redisCache.js'
 
-const client = await initRedisClient()
+const redisClient = await initRedisClient()
 
 const getAllProducts = async (req, res) => {
   const page = Number(req.query.pageNumber) || 1
   const pageSize = 20
   const count = await Product.countDocuments()
 
+  let product = await redisClient.get(`products:${page}`)
+
+  if (product) {
+    return res.status(StatusCodes.OK).json({
+      error: false,
+      products: JSON.parse(product),
+      source: 'cache',
+    })
+  }
+
   const allProducts = await Product.find({})
     .limit(pageSize)
     .skip(pageSize * (page - 1))
     .sort('-createdAt')
+
+  if (allProducts.length === 0) {
+    return res.status(StatusCodes.NOT_FOUND).json({
+      error: true,
+      message: 'Products not found!',
+    })
+  }
+
+  await redisClient.set(
+    `products:${page}`,
+    JSON.stringify(allProducts),
+    'EX',
+    3600,
+  )
+
   return res.json({
+    error: false,
     products: allProducts,
     page,
     pages: Math.ceil(count / pageSize),
     total: count,
+    source: 'database',
   })
 }
 
 const getProductById = async (req, res) => {
   const id = req.params.id
 
-  let product = await client.get(`product:${id}`)
+  let product = await redisClient.get(`product:${id}`)
   if (product) {
-    // Eğer ürün önbellekte varsa, bunu döndür
     return res.status(StatusCodes.OK).json({
       source: 'cache',
       error: false,
       product: JSON.parse(product),
     })
   }
-  // Eğer ürün önbellekte yoksa, veritabanından getir ve önbelleğe kaydet
+
   product = await Product.findById(id)
   if (product) {
-    await client.set(`product:${id}`, 3600, JSON.stringify(product)) // 1 saatlik önbellekleme
+    await redisClient.set(`product:${id}`, JSON.stringify(product), 'EX', 3600) // 1 saatlik önbellekleme
     return res.status(StatusCodes.OK).json({
       source: 'database',
       error: false,
