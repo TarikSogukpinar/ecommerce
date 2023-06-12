@@ -33,14 +33,12 @@ router.post(
 router.put(
   '/updateProduct/:id',
   verifyToken,
-  verifyRoles('seller'),
   tryCatch(productController.updateProduct),
 )
 
 router.delete(
   '/deleteProductById/:id',
   verifyToken,
-  verifyRoles('seller', 'admin'),
   tryCatch(productController.deleteProductById),
 )
 

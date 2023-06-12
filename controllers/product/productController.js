@@ -1,4 +1,5 @@
 import Product from '../../models/Product.js'
+import Category from '../../models/Category.js'
 import createProductValidationSchema from '../../validations/productValidations/createProductValidationSchema.js'
 import updateProductValidationSchema from '../../validations/productValidations/updateProductValidationSchema.js'
 import searchProductValidationSchema from '../../validations/productValidations/searchProductValidationSchema.js'
@@ -57,7 +58,19 @@ const createProduct = async (req, res) => {
       .json({ error: true, message: error.details[0].message })
   }
 
+  const categoryName = req.body.category
+
+  const category = await Category.findOne({ categoryName: categoryName })
+
+  if (!category) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      error: true,
+      message: 'Category not found',
+    })
+  }
+
   req.body.userId = req.user.userId
+  req.body.category = category._id
   const product = new Product(req.body)
 
   const savedProduct = await product.save()
