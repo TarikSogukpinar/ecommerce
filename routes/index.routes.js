@@ -3,6 +3,7 @@ import userRoutes from './user/user.routes.js'
 import productRoutes from './product/product.routes.js'
 import cartRoutes from './cart/cart.routes.js'
 import adminRoutes from './admin/admin.routes.js'
+import categoryRoutes from './category/category.routes.js'
 
 export function initRoutes(app) {
   app.use('/api/auth', authRoutes)
@@ -10,4 +11,5 @@ export function initRoutes(app) {
   app.use('/api/product', productRoutes)
   app.use('/api/cart', cartRoutes)
   app.use('/api/admin', adminRoutes)
+  app.use('/api/category', categoryRoutes)
 }
