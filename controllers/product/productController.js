@@ -4,6 +4,9 @@ import createProductValidationSchema from '../../validations/productValidations/
 import updateProductValidationSchema from '../../validations/productValidations/updateProductValidationSchema.js'
 import searchProductValidationSchema from '../../validations/productValidations/searchProductValidationSchema.js'
 import { StatusCodes } from 'http-status-codes'
+import { initRedisClient } from '../../helpers/cache/redisCache.js'
+
+const client = await initRedisClient()
 
 const getAllProducts = async (req, res) => {
   const page = Number(req.query.pageNumber) || 1
@@ -24,14 +27,31 @@ const getAllProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
   const id = req.params.id
-  const product = await Product.findById(id)
 
+  let product = await client.get(`product:${id}`)
   if (product) {
-    return res.status(StatusCodes.OK).json({ error: false, product: product })
+    // Eğer ürün önbellekte varsa, bunu döndür
+    return res.status(StatusCodes.OK).json({
+      source: 'cache',
+      error: false,
+      product: JSON.parse(product),
+    })
   }
-  return res
-    .status(StatusCodes.NOT_FOUND)
-    .json({ error: true, message: 'Product not found!' })
+  // Eğer ürün önbellekte yoksa, veritabanından getir ve önbelleğe kaydet
+  product = await Product.findById(id)
+  if (product) {
+    await client.set(`product:${id}`, 3600, JSON.stringify(product)) // 1 saatlik önbellekleme
+    return res.status(StatusCodes.OK).json({
+      source: 'database',
+      error: false,
+      product: product,
+    })
+  } else {
+    return res.status(StatusCodes.NOT_FOUND).json({
+      error: true,
+      message: 'Product not found!',
+    })
+  }
 }
 
 const deleteProductById = async (req, res) => {
