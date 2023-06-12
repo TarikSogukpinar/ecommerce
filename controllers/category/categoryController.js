@@ -67,4 +67,19 @@ const searchCategory = async (req, res) => {
   })
 }
 
-export default { createCategory, searchCategory }
+const searchCategoryById = async (req, res) => {
+  const category = await Category.findById(req.params.id)
+
+  if (!category) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ error: true, message: 'Category not found!' })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    category: category,
+  })
+}
+
+export default { createCategory, searchCategory, searchCategoryById }

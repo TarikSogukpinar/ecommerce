@@ -18,4 +18,9 @@ router.get(
   tryCatch(categoryController.searchCategory),
 )
 
+router.get(
+  '/searchCategoryById/:id',
+  tryCatch(categoryController.searchCategoryById),
+)
+
 export default router
