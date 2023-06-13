@@ -3,15 +3,15 @@ import nodemailer from 'nodemailer'
 const sendEmail = async (email, subject, text) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: 'sandbox.smtp.mailtrap.io',
-      port: 2525,
+      host: process.env.SMT_HOST,
+      port: process.env.SMT_PORT,
       auth: {
-        user: '1b6eb4e45e5829',
-        pass: '586cbbd2e5b069',
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
       },
     })
     await transporter.sendMail({
-      from: 'sandbox.smtp.mailtrap.io',
+      from: process.env.SMT_HOST,
       to: email,
       subject: subject,
       text: text,
