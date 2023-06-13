@@ -64,7 +64,7 @@ const getProductById = async (req, res) => {
     })
   }
 
-  product = await Product.findById(id)
+  product = await Product.findById(id).orFail(new Error('Product not found!'))
   if (product) {
     await redisClient.set(`product:${id}`, JSON.stringify(product), 'EX', 3600) // 1 hour cache
     return res.status(StatusCodes.OK).json({
