@@ -66,7 +66,7 @@ const getProductById = async (req, res) => {
 
   product = await Product.findById(id)
   if (product) {
-    await redisClient.set(`product:${id}`, JSON.stringify(product), 'EX', 3600) // 1 saatlik önbellekleme
+    await redisClient.set(`product:${id}`, JSON.stringify(product), 'EX', 3600) // 1 hour cache
     return res.status(StatusCodes.OK).json({
       source: 'database',
       error: false,
