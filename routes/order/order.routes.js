@@ -8,4 +8,34 @@ const router = Router()
 
 router.post('/createOrder', verifyToken, tryCatch(orderController.createOrder))
 
+router.get(
+  '/searchOrder/:key',
+  verifyToken,
+  tryCatch(orderController.searchOrder),
+)
+
+router.get(
+  '/getOrderById/:id',
+  verifyToken,
+  tryCatch(orderController.getOrderById),
+)
+
+router.put(
+  '/updateOrder/:id',
+  verifyToken,
+  tryCatch(orderController.updateOrder),
+)
+
+router.put(
+  '/cancelOrder/:id',
+  verifyToken,
+  tryCatch(orderController.cancelOrder),
+)
+
+router.put(
+  '/updateOrderStatus/:id',
+  verifyToken,
+  tryCatch(orderController.updateOrderStatus),
+)
+
 export default router
