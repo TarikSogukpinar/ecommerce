@@ -1,11 +1,8 @@
-
 ![Logo](https://i.ibb.co/vL92vfr/Ads-z-tasar-m-1.png)
-
 
 # E-Commerce
 
 E-commerce API built using NodeJS & MongoDB
-
 
 ## Installation
 
@@ -25,8 +22,7 @@ Docker
   cd ecommerce
   docker-compose up
 ```
-    
-    
+
 ## API Reference
 
 #### Get all items
@@ -52,7 +48,6 @@ Docker
 #### add(num1, num2)
 
 Takes two numbers and returns the sum.
-
 
 ## Built With
 
@@ -85,8 +80,3 @@ List of any major frameworks used to build the project.
 [Multer](https://www.npmjs.com/package/multer) NodeJS middleware for handling multipart/form-data
 
 [Nodemailer](https://www.npmjs.com/package/nodemailer) Easy as cake e-mail sending from your Node.js applications
-
-
-
-
-

@@ -23,7 +23,6 @@ dotenv.config({
   path: envFile,
 })
 
-
 const app = express()
 
 app.use(express.json({ limit: '10kb' }))
