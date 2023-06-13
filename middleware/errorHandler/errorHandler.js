@@ -4,14 +4,14 @@ import StatusCode from 'http-status-codes'
 // eslint-disable-next-line no-unused-vars
 export const errorHandler = (error, req, res, next) => {
   if (error.name === 'ValidationError') {
-    return res.status(StatusCode.BAD_REQUEST).send({
+    return res.status(StatusCode.BAD_REQUEST).json({
       type: 'ValidationError',
       details: error.details,
     })
   }
 
   if (error instanceof AppError) {
-    return res.status(error.statusCode).send({
+    return res.status(error.statusCode).json({
       type: error.errorCode,
       message: error.message,
     })

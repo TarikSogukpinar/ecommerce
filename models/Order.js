@@ -35,6 +35,10 @@ const orderSchema = new mongoose.Schema(
       type: String,
       default: moment().format('MMMM Do YYYY, h:mm:ss a'),
     },
+    updatedAt: {
+      type: String,
+      default: () => moment().format('MMMM Do YYYY, h:mm:ss a'),
+    },
   },
   { timestamps: true, versionKey: false },
 )
