@@ -19,6 +19,12 @@ const userSchema = new mongoose.Schema(
         ref: 'Product',
       },
     ],
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+      },
+    ],
     createdAt: {
       type: String,
       default: moment().format('MMMM Do YYYY, h:mm:ss a'),
