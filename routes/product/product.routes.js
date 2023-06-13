@@ -52,4 +52,9 @@ router.get(
   tryCatch(productController.getExpensiveFiveProducts),
 )
 
+router.get(
+  '/getRecentlyAddedProducts',
+  tryCatch(productController.getRecentlyAddedProducts),
+)
+
 export default router

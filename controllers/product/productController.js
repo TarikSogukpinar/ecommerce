@@ -221,6 +221,19 @@ const getExpensiveFiveProducts = async (req, res) => {
   })
 }
 
+const getRecentlyAddedProducts = async (req, res) => {
+  const product = await Product.find({}).sort({ createdAt: -1 }).limit(10)
+
+  if (product) {
+    return res.status(StatusCodes.OK).json({ error: false, product: product })
+  }
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    products: product,
+  })
+}
+
 export default {
   getProductById,
   getAllProducts,
@@ -230,4 +243,5 @@ export default {
   deleteProductById,
   getCheapestFiveProducts,
   getExpensiveFiveProducts,
+  getRecentlyAddedProducts,
 }
