@@ -41,4 +41,10 @@ router.delete(
   tryCatch(adminController.deleteUserById),
 )
 
+router.put(
+  '/updateUserRole/:id',
+  verifyToken,
+  tryCatch(adminController.updateUserRole),
+)
+
 export default router

@@ -1,6 +1,7 @@
 import User from '../../models/User.js'
 import bcrypt from 'bcryptjs'
 import { StatusCodes } from 'http-status-codes'
+import updateUserRoleValidationSchema from '../../validations/adminValidations/updateUserRoleValidationSchema.js'
 import updateUserByIdValidationSchema from '../../validations/adminValidations/updateUserByIdValidationSchema.js'
 import createNewUserValidationSchema from '../../validations/adminValidations/createNewUserValidationSchema.js'
 
@@ -127,10 +128,49 @@ const deleteUserById = async (req, res) => {
     .json({ error: true, message: 'User not found!' })
 }
 
+const updateUserRole = async (req, res) => {
+  const { roles } = req.body
+
+  const { error } = updateUserRoleValidationSchema(req.body)
+
+  if (error) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ error: true, message: error.details[0].message })
+  }
+
+  const user = await User.findById(req.params.id)
+
+  if (!user) {
+    return res.status(StatusCodes.NOT_FOUND).json({
+      error: true,
+      message: 'User not found!',
+    })
+  }
+
+  if (user.roles === roles) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      error: true,
+      message: 'New role is the same as the current role.',
+    })
+  }
+
+  user.roles = roles
+
+  const updatedUser = await user.save()
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    message: 'User role updated successfully!',
+    updatedUser: updatedUser,
+  })
+}
+
 export default {
   createNewUser,
   getAllUsers,
   getUserById,
   updateUserById,
   deleteUserById,
+  updateUserRole,
 }
