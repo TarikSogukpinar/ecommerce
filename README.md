@@ -283,7 +283,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Roadmap
 
-- Discount, Review, Support services will be written
+- Discount, Review, Support, Payment services will be written
 
 - Tests will be written for all services
 
