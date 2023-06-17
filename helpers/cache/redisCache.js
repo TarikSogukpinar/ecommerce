@@ -5,7 +5,7 @@ async function initRedisClient() {
     const client = createClient({
       url: process.env.REDIS_HOST,
     })
-    client.on('error', (error) =>
+    await client.on('error', (error) =>
       console.log('Redis Client Connection Error', error),
     )
     await client.connect().then(() => console.log('Redis cache connected...'))
