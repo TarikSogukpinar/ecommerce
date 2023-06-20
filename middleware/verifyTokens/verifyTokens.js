@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
       .status(StatusCodes.UNAUTHORIZED)
       .json({ error: true, message: 'Invalid Authentication.' })
   }
-  
+
   try {
     const user = jwt.verify(token, process.env.PRIVATE_KEY)
     req.user = user

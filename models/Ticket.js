@@ -12,16 +12,21 @@ const ticketSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      required: true,
+      required: false,
     },
     response: {
       type: String,
       required: false,
     },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   { timestamps: true, versionKey: false },
 )
 
-const Ticket = new mongoose.model('user', ticketSchema)
+const Ticket = new mongoose.model('ticket', ticketSchema)
 
 export default Ticket

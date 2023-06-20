@@ -1,7 +1,7 @@
 const cookieOptions = {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'development' ? false : true,
-  sameSite: 'None', //cross-site cookie
+  sameSite: 'Lax', //cross-site cookie
   maxAge: 60 * 60 * 24 * 1000,
 }
 

@@ -1,11 +1,8 @@
-
 ![Logo](https://i.ibb.co/vL92vfr/Ads-z-tasar-m-1.png)
-
 
 # E-Commerce
 
 E-commerce API built using NodeJS & MongoDB
-
 
 ## Installation
 
@@ -25,12 +22,10 @@ Docker
   cd ecommerce
   docker-compose up
 ```
-    
-    
+
 ## API Reference
 
-
-#### Auth 
+#### Auth
 
 ```http
   POST /api/auth/login
@@ -44,9 +39,7 @@ Docker
   GET /api/auth/logout
 ```
 
-
 #### Admin
-
 
 ```http
   GET /api/admin/getAllusers
@@ -90,7 +83,7 @@ Docker
   DELETE /api/cart/deleteUserCart/${userId}
 ```
 
-#### Category 
+#### Category
 
 ```http
   POST /api/category/createCategory
@@ -152,7 +145,6 @@ Docker
   PUT /api/order/updateOrderStatus/${orderId}
 ```
 
-
 #### Product
 
 ```http
@@ -191,7 +183,6 @@ Docker
   GET /api/product/getRecentlyAddedProducts
 ```
 
-
 #### User
 
 ```http
@@ -206,11 +197,7 @@ Docker
   DELETE /api/user/reset-password/${userId}
 ```
 
-
 **Other API services are still being developed**
-
-
-
 
 ## Built With
 
@@ -264,12 +251,6 @@ List of any major frameworks used to build the project.
 
 [PM2](https://www.npmjs.com/package/pm2) PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.
 
-
-
-
-
-
-
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env.development & .env.production file
@@ -279,7 +260,6 @@ To run this project, you will need to add the following environment variables to
 `PRIVATE_KEY  = yourprivatesecretkey`
 
 `REDIS_HOST  = yourredishostconnectionurl`
-
 
 ## Roadmap
 
@@ -296,12 +276,11 @@ To run this project, you will need to add the following environment variables to
 - Logging will be added
 
 - Some refactoring will be done & maybe bug fix
+
 ## Lessons Learned
 
 In this application, I think I have improved myself in writing APIs that provide different services, and I believe I have learned to use technologies such as Redis and Docker. I learned more about Express.js and the general Node.js architecture. I started to have a deeper knowledge of Mongo db and error handling. I had the opportunity to use many new npm packages.
 
-
 ## Feedback
 
 If you have any feedback, please reach out to me at tariksogukpinar@outlook.com
-

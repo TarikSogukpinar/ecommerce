@@ -6,6 +6,7 @@ import adminRoutes from './admin/admin.routes.js'
 import categoryRoutes from './category/category.routes.js'
 import orderRoutes from './order/order.routes.js'
 import favoriteRoutes from './favorite/favorite.routes.js'
+import supportRoutes from './support/support.routes.js'
 
 export function initRoutes(app) {
   app.use('/api/auth', authRoutes)
@@ -16,4 +17,5 @@ export function initRoutes(app) {
   app.use('/api/category', categoryRoutes)
   app.use('/api/order', orderRoutes)
   app.use('/api/favorite', favoriteRoutes)
+  app.use('/api/support', supportRoutes)
 }

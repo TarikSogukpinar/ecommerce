@@ -11,3 +11,10 @@ router.post(
   verifyToken,
   tryCatch(supportController.createTicket),
 )
+router.get(
+  '/getAllTickets',
+  verifyToken,
+  tryCatch(supportController.getAllTickets),
+)
+
+export default router

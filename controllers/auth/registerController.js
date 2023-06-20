@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
 
   await data.save()
 
-  res.status(StatusCodes.OK).json({
+  return res.status(StatusCodes.OK).json({
     error: false,
     data: data,
     message: 'Account Created Succesfully!',
