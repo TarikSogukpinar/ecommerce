@@ -23,6 +23,23 @@ const ticketSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    messages: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+          required: true,
+        },
+        message: {
+          type: String,
+          required: true,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   { timestamps: true, versionKey: false },
 )

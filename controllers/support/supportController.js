@@ -1,3 +1,4 @@
+import User from '../../models/User.js'
 import Ticket from '../../models/Ticket.js'
 import { StatusCodes } from 'http-status-codes'
 import createSupportValidationSchema from '../../validations/supportValidations/createSupportValidationSchema.js'

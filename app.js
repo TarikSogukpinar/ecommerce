@@ -39,7 +39,7 @@ initRoutes(app)
 
 app.use(notFound)
 app.use(errorHandler)
-await connectionMongoDbDatabase()
+connectionMongoDbDatabase()
 
 export const PORT = process.env.PORT || 5000
 export default app

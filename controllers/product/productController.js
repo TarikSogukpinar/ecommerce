@@ -6,7 +6,7 @@ import searchProductValidationSchema from '../../validations/productValidations/
 import { StatusCodes } from 'http-status-codes'
 import { initRedisClient } from '../../helpers/cache/redisCache.js'
 
-const redisClient = await initRedisClient()
+const redisClient =  initRedisClient()
 
 const getAllProducts = async (req, res) => {
   const page = Number(req.query.pageNumber) || 1
