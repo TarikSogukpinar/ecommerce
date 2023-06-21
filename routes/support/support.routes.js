@@ -14,6 +14,7 @@ router.post(
 router.get(
   '/getAllTickets',
   verifyToken,
+  verifyRoles('support'),
   tryCatch(supportController.getAllTickets),
 )
 

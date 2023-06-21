@@ -13,7 +13,7 @@ const createTicket = async (req, res) => {
     })
   }
 
-  const { title, description, status, response } = req.body
+  const { title, description, status, response, messages } = req.body
   const createdBy = req.user.userId
   const createdRole = req.user.roles
 
@@ -27,6 +27,13 @@ const createTicket = async (req, res) => {
     status,
     response,
     createdBy,
+    createdRole,
+    messages: [
+      {
+        user: createdBy,
+        message: messages,
+      },
+    ],
   })
 
   const createdTicket = await ticket.save()
@@ -47,14 +54,6 @@ const getAllTickets = async (req, res) => {
   const page = Number(req.query.pageNumber) || 1
   const pageSize = 20
   const count = await Ticket.countDocuments()
-
-  console.log('req.user bilgisi', req.user.roles)
-  if (req.user.roles != 'support') {
-    return res.status(StatusCodes.BAD_REQUEST).json({
-      error: true,
-      message: 'You are not authorized to access this route!',
-    })
-  }
 
   const getAllTickets = await Ticket.find({})
     .limit(pageSize)

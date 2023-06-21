@@ -23,6 +23,10 @@ const ticketSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    createdRole: {
+      type: String,
+      required: true,
+    },
     messages: [
       {
         user: {
