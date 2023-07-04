@@ -4,24 +4,24 @@ import createProductValidationSchema from '../../validations/productValidations/
 import updateProductValidationSchema from '../../validations/productValidations/updateProductValidationSchema.js'
 import searchProductValidationSchema from '../../validations/productValidations/searchProductValidationSchema.js'
 import { StatusCodes } from 'http-status-codes'
-import { initRedisClient } from '../../helpers/cache/redisCache.js'
+// import { initRedisClient } from '../../helpers/cache/redisCache.js'
 
-const redisClient =  initRedisClient()
+// const redisClient =  initRedisClient()
 
 const getAllProducts = async (req, res) => {
   const page = Number(req.query.pageNumber) || 1
   const pageSize = 20
   const count = await Product.countDocuments()
 
-  let product = await redisClient.get(`products:${page}`)
+  // let product = await redisClient.get(`products:${page}`)
 
-  if (product) {
-    return res.status(StatusCodes.OK).json({
-      error: false,
-      products: JSON.parse(product),
-      source: 'cache',
-    })
-  }
+  // if (product) {
+  //   return res.status(StatusCodes.OK).json({
+  //     error: false,
+  //     products: JSON.parse(product),
+  //     source: 'cache',
+  //   })
+  // }
 
   const allProducts = await Product.find({})
     .limit(pageSize)
@@ -35,12 +35,12 @@ const getAllProducts = async (req, res) => {
     })
   }
 
-  await redisClient.set(
-    `products:${page}`,
-    JSON.stringify(allProducts),
-    'EX',
-    3600,
-  )
+  // await redisClient.set(
+  //   `products:${page}`,
+  //   JSON.stringify(allProducts),
+  //   'EX',
+  //   3600,
+  // )
 
   return res.json({
     error: false,

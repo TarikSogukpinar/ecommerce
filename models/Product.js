@@ -31,6 +31,10 @@ const productSchema = new mongoose.Schema(
       ref: 'Category',
       required: true,
     },
+    discount: {
+      type: Number,
+      default: 0,
+    },
     brand: {
       type: String,
     },

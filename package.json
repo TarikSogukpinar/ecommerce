@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start":"cross-env NODE_ENV=production nodemon index.js",
+    "start": "cross-env NODE_ENV=production nodemon index.js",
     "dev:development": "cross-env NODE_ENV=development nodemon index.js",
     "dev:production": "cross-env NODE_ENV=production nodemon index.js",
     "generate-fakeData": "cross-env NODE_ENV=development node mocks/generateFakeData.js",
