@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 
 const updateProductDiscount = async (req, res) => {
   const productId = req.params.id
-  const discount = req.body.discount
+  const discountPercentage = parseFloat(req.body.percentage);
 
   const product = await Product.findById(productId)
 
@@ -14,7 +14,8 @@ const updateProductDiscount = async (req, res) => {
     })
   }
 
-  product.discount = discount
+  const discountAmount = (product.price * discountPercentage) / 100
+  product.price -= discountAmount
   await product.save()
 
   return res.status(StatusCodes.OK).json({

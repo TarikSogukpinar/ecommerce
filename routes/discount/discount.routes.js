@@ -7,7 +7,7 @@ import { tryCatch } from '../../helpers/utils/tryCatch.js'
 const router = Router()
 
 router.put(
-  '/updateProductDiscount/:id/:discount',
+  '/updateProductDiscount/:id',
   verifyToken,
   tryCatch(discountController.updateProductDiscount),
 )
