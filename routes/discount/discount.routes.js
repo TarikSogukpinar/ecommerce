@@ -12,4 +12,10 @@ router.put(
   tryCatch(discountController.updateProductDiscount),
 )
 
+router.put(
+  '/updateTopExpensiveProductDiscount',
+  verifyToken,
+  tryCatch(discountController.updateTopExpensiveProductDiscount),
+)
+
 export default router

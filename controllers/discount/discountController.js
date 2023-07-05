@@ -18,7 +18,7 @@ const updateProductDiscount = async (req, res) => {
   const product = await Product.findById(productId)
 
   if (!product) {
-    return res.status(StatusCodes.NotFound).json({
+    return res.status(StatusCodes.NOT_FOUND).json({
       error: true,
       message: 'Product not found',
     })
@@ -34,4 +34,26 @@ const updateProductDiscount = async (req, res) => {
   })
 }
 
-export default { updateProductDiscount }
+const updateTopExpensiveProductDiscount = async (req, res) => {
+  const products = await Product.find().sort({ price: -1 }).limit(10)
+
+  if (!products) {
+    return res.status(StatusCodes.NOT_FOUND).json({
+      error: true,
+      message: 'Products not found',
+    })
+  }
+
+  products.forEach(async (product) => {
+    const discountAmount = (product.price * req.body.percentage) / 100
+    product.discount = discountAmount
+    await product.save()
+  })
+
+  return res.status(StatusCodes.OK).json({
+    error: false,
+    products: products,
+  })
+}
+
+export default { updateProductDiscount, updateTopExpensiveProductDiscount }
