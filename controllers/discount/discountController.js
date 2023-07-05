@@ -1,9 +1,19 @@
 import Product from '../../models/Product.js'
 import { StatusCodes } from 'http-status-codes'
+import updateProductDiscountValidationSchema from '../../validations/discountValidations/updateProductDiscountValidationSchema.js'
 
 const updateProductDiscount = async (req, res) => {
   const productId = req.params.id
-  const discountPercentage = parseFloat(req.body.percentage);
+  const discountPercentage = parseFloat(req.body.percentage)
+
+  const { error } = updateProductDiscountValidationSchema(req.body)
+
+  if (error) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      error: true,
+      message: error.details[0].message,
+    })
+  }
 
   const product = await Product.findById(productId)
 
