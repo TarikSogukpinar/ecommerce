@@ -1,7 +1,7 @@
 import request from 'supertest'
 import app from '../../../app.js'
 
-let token;
+let token
 
 beforeEach(async () => {
   // Create a new user

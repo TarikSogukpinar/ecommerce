@@ -1,5 +1,6 @@
 import Product from '../../models/Product.js'
 import { StatusCodes } from 'http-status-codes'
+import updateTopExpensiveProductDiscountValidationSchema from '../../validations/discountValidations/updateTopExpensiveProductDiscountValidationSchema.js'
 import updateProductDiscountValidationSchema from '../../validations/discountValidations/updateProductDiscountValidationSchema.js'
 
 const updateProductDiscount = async (req, res) => {
@@ -31,10 +32,18 @@ const updateProductDiscount = async (req, res) => {
   return res.status(StatusCodes.OK).json({
     error: false,
     product: product,
+    source: 'database',
   })
 }
 
 const updateTopExpensiveProductDiscount = async (req, res) => {
+  const { error } = updateTopExpensiveProductDiscountValidationSchema(req.body)
+  if (error) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      error: true,
+      message: error.details[0].message,
+    })
+  }
   const products = await Product.find().sort({ price: -1 }).limit(10)
 
   if (!products) {
@@ -46,13 +55,14 @@ const updateTopExpensiveProductDiscount = async (req, res) => {
 
   products.forEach(async (product) => {
     const discountAmount = (product.price * req.body.percentage) / 100
-    product.discount = discountAmount
+    product.price = discountAmount
     await product.save()
   })
 
   return res.status(StatusCodes.OK).json({
     error: false,
     products: products,
+    source: 'database',
   })
 }
 

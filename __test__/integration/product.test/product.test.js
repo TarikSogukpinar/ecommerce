@@ -22,7 +22,7 @@ afterEach(async () => {
   //   await mongoose.connection.db.dropDatabase()
   await mongoose.connection.close()
 })
-let token;
+let token
 describe('Product API', () => {
   it('should create a new product and return 201 status', async () => {
     const productData = {
