@@ -8,6 +8,7 @@ import orderRoutes from './order/order.routes.js'
 import favoriteRoutes from './favorite/favorite.routes.js'
 import supportRoutes from './support/support.routes.js'
 import discountRoutes from './discount/discount.routes.js'
+import reviewRoutes from './review/review.routes.js'
 
 export function initRoutes(app) {
   app.use('/api/auth', authRoutes)
@@ -20,4 +21,5 @@ export function initRoutes(app) {
   app.use('/api/favorite', favoriteRoutes)
   app.use('/api/support', supportRoutes)
   app.use('/api/discount', discountRoutes)
+  app.use('/api/review', reviewRoutes)
 }
