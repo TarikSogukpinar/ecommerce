@@ -1,4 +1,5 @@
 import Order from '../../models/Order.js'
+import Product from '../../models/Product.js'
 import updateOrderStatusValidationSchema from '../../validations/orderValidations/updateOrderStatusValidationSchema.js'
 import updateOrderValidationSchema from '../../validations/orderValidations/updateOrderValidationSchema.js'
 import searchOrderValidationSchema from '../../validations/orderValidations/searchOrderValidationSchema.js'
@@ -7,13 +8,30 @@ import { StatusCodes } from 'http-status-codes'
 
 const createOrder = async (req, res) => {
   const { error } = createOrderValidationSchema(req.body)
+  
   if (error) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ error: true, message: error.details[0].message })
   }
-  req.body.userId = req.user.userId
-  const order = new Order(req.body)
+  const { userId, customerName, orderItem, address } = req.body
+
+  const { productId } = req.params
+
+  const product = await Product.findById(productId)
+  if (!product) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ error: true, message: 'Product not found' })
+  }
+
+  const order = new Order({
+    userId: req.user.userId,
+    productId,
+    customerName,
+    orderItem,
+    address,
+  })
 
   const savedOrder = await order.save()
 
