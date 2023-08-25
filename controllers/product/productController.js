@@ -4,81 +4,81 @@ import createProductValidationSchema from '../../validations/productValidations/
 import updateProductValidationSchema from '../../validations/productValidations/updateProductValidationSchema.js'
 import searchProductValidationSchema from '../../validations/productValidations/searchProductValidationSchema.js'
 import { StatusCodes } from 'http-status-codes'
-import { initRedisClient } from '../../helpers/cache/redisCache.js'
+// import { initRedisClient } from '../../helpers/cache/redisCache.js'
 
-const redisClient =  initRedisClient()
+// const redisClient =  initRedisClient()
 
-const getAllProducts = async (req, res) => {
-  const page = Number(req.query.pageNumber) || 1
-  const pageSize = 20
-  const count = await Product.countDocuments()
+// const getAllProducts = async (req, res) => {
+//   const page = Number(req.query.pageNumber) || 1
+//   const pageSize = 20
+//   const count = await Product.countDocuments()
 
-  let product = await redisClient.get(`products:${page}`)
+//   let product = await redisClient.get(`products:${page}`)
 
-  if (product) {
-    return res.status(StatusCodes.OK).json({
-      error: false,
-      products: JSON.parse(product),
-      source: 'cache',
-    })
-  }
+//   if (product) {
+//     return res.status(StatusCodes.OK).json({
+//       error: false,
+//       products: JSON.parse(product),
+//       source: 'cache',
+//     })
+//   }
 
-  const allProducts = await Product.find({})
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
-    .sort('-createdAt')
+//   const allProducts = await Product.find({})
+//     .limit(pageSize)
+//     .skip(pageSize * (page - 1))
+//     .sort('-createdAt')
 
-  if (allProducts.length === 0) {
-    return res.status(StatusCodes.NOT_FOUND).json({
-      error: true,
-      message: 'Products not found!',
-    })
-  }
+//   if (allProducts.length === 0) {
+//     return res.status(StatusCodes.NOT_FOUND).json({
+//       error: true,
+//       message: 'Products not found!',
+//     })
+//   }
 
-  await redisClient.set(
-    `products:${page}`,
-    JSON.stringify(allProducts),
-    'EX',
-    3600,
-  )
+//   await redisClient.set(
+//     `products:${page}`,
+//     JSON.stringify(allProducts),
+//     'EX',
+//     3600,
+//   )
 
-  return res.json({
-    error: false,
-    products: allProducts,
-    page,
-    pages: Math.ceil(count / pageSize),
-    total: count,
-    source: 'database',
-  })
-}
+//   return res.json({
+//     error: false,
+//     products: allProducts,
+//     page,
+//     pages: Math.ceil(count / pageSize),
+//     total: count,
+//     source: 'database',
+//   })
+// }
 
-const getProductById = async (req, res) => {
-  const id = req.params.id
+// const getProductById = async (req, res) => {
+//   const id = req.params.id
 
-  let product = await redisClient.get(`product:${id}`)
-  if (product) {
-    return res.status(StatusCodes.OK).json({
-      source: 'cache',
-      error: false,
-      product: JSON.parse(product),
-    })
-  }
+//   let product = await redisClient.get(`product:${id}`)
+//   if (product) {
+//     return res.status(StatusCodes.OK).json({
+//       source: 'cache',
+//       error: false,
+//       product: JSON.parse(product),
+//     })
+//   }
 
-  product = await Product.findById(id).orFail(new Error('Product not found!'))
-  if (product) {
-    await redisClient.set(`product:${id}`, JSON.stringify(product), 'EX', 3600) // 1 hour cache
-    return res.status(StatusCodes.OK).json({
-      source: 'database',
-      error: false,
-      product: product,
-    })
-  } else {
-    return res.status(StatusCodes.NOT_FOUND).json({
-      error: true,
-      message: 'Product not found!',
-    })
-  }
-}
+//   product = await Product.findById(id).orFail(new Error('Product not found!'))
+//   if (product) {
+//     await redisClient.set(`product:${id}`, JSON.stringify(product), 'EX', 3600) // 1 hour cache
+//     return res.status(StatusCodes.OK).json({
+//       source: 'database',
+//       error: false,
+//       product: product,
+//     })
+//   } else {
+//     return res.status(StatusCodes.NOT_FOUND).json({
+//       error: true,
+//       message: 'Product not found!',
+//     })
+//   }
+// }
 
 const deleteProductById = async (req, res) => {
   const id = req.params.id
@@ -235,8 +235,8 @@ const getRecentlyAddedProducts = async (req, res) => {
 }
 
 export default {
-  getProductById,
-  getAllProducts,
+  // getProductById,
+  // getAllProducts,
   createProduct,
   updateProduct,
   searchProducts,
