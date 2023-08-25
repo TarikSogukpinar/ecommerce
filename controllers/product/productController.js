@@ -13,15 +13,15 @@ import { StatusCodes } from 'http-status-codes'
 //   const pageSize = 20
 //   const count = await Product.countDocuments()
 
-//   let product = await redisClient.get(`products:${page}`)
+  // let product = await redisClient.get(`products:${page}`)
 
-//   if (product) {
-//     return res.status(StatusCodes.OK).json({
-//       error: false,
-//       products: JSON.parse(product),
-//       source: 'cache',
-//     })
-//   }
+  // if (product) {
+  //   return res.status(StatusCodes.OK).json({
+  //     error: false,
+  //     products: JSON.parse(product),
+  //     source: 'cache',
+  //   })
+  // }
 
 //   const allProducts = await Product.find({})
 //     .limit(pageSize)
@@ -35,12 +35,12 @@ import { StatusCodes } from 'http-status-codes'
 //     })
 //   }
 
-//   await redisClient.set(
-//     `products:${page}`,
-//     JSON.stringify(allProducts),
-//     'EX',
-//     3600,
-//   )
+  // await redisClient.set(
+  //   `products:${page}`,
+  //   JSON.stringify(allProducts),
+  //   'EX',
+  //   3600,
+  // )
 
 //   return res.json({
 //     error: false,

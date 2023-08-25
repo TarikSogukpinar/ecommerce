@@ -1,21 +1,21 @@
 import { Router } from 'express'
 import { verifyToken } from '../../middleware/verifyTokens/verifyTokens.js'
 import { verifyRoles } from '../../middleware/verifyRoles/verifyRoles.js'
-import discountController from '../../controllers/discount/discountController.js'
+import reviewController from '../../controllers/review/reviewController.js'
 import { tryCatch } from '../../helpers/utils/tryCatch.js'
 
 const router = Router()
 
-router.put(
-  '/updateProductDiscount/:id',
+router.post(
+  '/createReview/:productId',
   verifyToken,
-  tryCatch(discountController.updateProductDiscount),
+  tryCatch(reviewController.createReview),
 )
 
-router.put(
-  '/updateTopExpensiveProductDiscount',
+router.get(
+  '/getReviewByProductId/:productId',
   verifyToken,
-  tryCatch(discountController.updateTopExpensiveProductDiscount),
+  tryCatch(reviewController.getReviewByProductId),
 )
 
 export default router

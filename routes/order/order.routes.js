@@ -6,7 +6,7 @@ import { verifyRoles } from '../../middleware/verifyRoles/verifyRoles.js'
 
 const router = Router()
 
-router.post('/createOrder', verifyToken, tryCatch(orderController.createOrder))
+router.post('/createOrder/:productId', verifyToken, tryCatch(orderController.createOrder))
 
 router.get(
   '/searchOrder/:key',
