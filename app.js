@@ -34,11 +34,12 @@ app.use(mongoSanitize())
 app.use(cors(corsOption))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.disable('x-powered-by')
-initRoutes(app)
+app.set('trust proxy', 1) // trust first proxy
+
 
 app.use(notFound)
 app.use(errorHandler)
 
-
+initRoutes(app)
 export const PORT = process.env.PORT || 5000
 export default app

@@ -15,13 +15,13 @@ router.get(
 )
 
 router.get(
-  '/getOrderById/:id',
+  '/orderById/:id',
   verifyToken,
   tryCatch(orderController.getOrderById),
 )
 
 router.put(
-  '/updateOrder/:id',
+  '/order/:id',
   verifyToken,
   tryCatch(orderController.updateOrder),
 )
@@ -33,7 +33,7 @@ router.put(
 )
 
 router.put(
-  '/updateOrderStatus/:id',
+  '/orderStatus/:id',
   verifyToken,
   tryCatch(orderController.updateOrderStatus),
 )

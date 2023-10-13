@@ -7,7 +7,7 @@ export const generateToken = (user) => {
       roles: user.roles,
     }
     const accessToken = jwt.sign(payload, process.env.PRIVATE_KEY, {
-      expiresIn: '3d',
+      expiresIn: process.env.EXPIRE,
     })
     return accessToken
   } catch (error) {

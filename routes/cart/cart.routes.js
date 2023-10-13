@@ -13,19 +13,19 @@ router.post(
 )
 
 router.get(
-  '/getUserCart/:userId',
+  '/userCart/:userId',
   verifyToken,
   tryCatch(cartController.getUserCart),
 )
 
 router.delete(
-  '/deleteCartItem/:userId/:productId',
+  '/cartItem/:userId/:productId',
   verifyToken,
   tryCatch(cartController.deleteCartItem),
 )
 
 router.delete(
-  '/deleteUserCart/:userId',
+  '/userCart/:userId',
   verifyToken,
   tryCatch(cartController.deleteUserCart),
 )

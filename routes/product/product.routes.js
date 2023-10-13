@@ -7,13 +7,13 @@ import { tryCatch } from '../../helpers/utils/tryCatch.js'
 const router = Router()
 
 router.get(
-  '/getAllProducts',
+  '/allProducts',
   verifyToken,
   tryCatch(productController.getAllProducts),
 )
 
 router.get(
-  '/getProductById/:id',
+  '/productById/:id',
   verifyToken,
   tryCatch(productController.getProductById),
 )
@@ -31,29 +31,29 @@ router.post(
 )
 
 router.put(
-  '/updateProduct/:id',
+  '/product/:id',
   verifyToken,
   tryCatch(productController.updateProduct),
 )
 
 router.delete(
-  '/deleteProductById/:id',
+  '/productById/:id',
   verifyToken,
   tryCatch(productController.deleteProductById),
 )
 
 router.get(
-  '/getCheapestFiveProducts',
+  '/cheapestFiveProducts',
   tryCatch(productController.getCheapestFiveProducts),
 )
 
 router.get(
-  '/getExpensiveFiveProducts',
+  '/expensiveFiveProducts',
   tryCatch(productController.getExpensiveFiveProducts),
 )
 
 router.get(
-  '/getRecentlyAddedProducts',
+  '/recentlyAddedProducts',
   tryCatch(productController.getRecentlyAddedProducts),
 )
 

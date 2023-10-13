@@ -7,13 +7,13 @@ import { tryCatch } from '../../helpers/utils/tryCatch.js'
 const router = Router()
 
 router.put(
-  '/updateProductDiscount/:id',
+  '/productDiscount/:id',
   verifyToken,
   tryCatch(discountController.updateProductDiscount),
 )
 
 router.put(
-  '/updateTopExpensiveProductDiscount',
+  '/topExpensiveProductDiscount',
   verifyToken,
   tryCatch(discountController.updateTopExpensiveProductDiscount),
 )

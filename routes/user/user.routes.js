@@ -6,7 +6,7 @@ import { tryCatch } from '../../helpers/utils/tryCatch.js'
 const router = Router()
 
 router.put(
-  '/updatePassword/:id',
+  '/password/:id',
   verifyToken,
   tryCatch(userController.updatePassword),
 )

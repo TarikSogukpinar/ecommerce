@@ -13,7 +13,7 @@ router.post(
 )
 
 router.get(
-  '/getReviewByProductId/:productId',
+  '/reviewByProductId/:productId',
   verifyToken,
   tryCatch(reviewController.getReviewByProductId),
 )

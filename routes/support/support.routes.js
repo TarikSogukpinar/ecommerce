@@ -12,7 +12,7 @@ router.post(
   tryCatch(supportController.createTicket),
 )
 router.get(
-  '/getAllTickets',
+  '/allTickets',
   verifyToken,
   verifyRoles('support'),
   tryCatch(supportController.getAllTickets),

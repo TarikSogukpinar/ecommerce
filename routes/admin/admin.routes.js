@@ -14,35 +14,35 @@ router.post(
 )
 
 router.get(
-  '/getAllUsers',
+  '/allUsers',
   verifyToken,
   verifyRoles('admin'),
   tryCatch(adminController.getAllUsers),
 )
 
 router.get(
-  '/getUserById/:id',
+  '/userById/:id',
   verifyToken,
   verifyRoles('admin'),
   tryCatch(adminController.getUserById),
 )
 
 router.put(
-  '/updateUserById/:id',
+  '/userById/:id',
   verifyToken,
   verifyRoles('admin'),
   tryCatch(adminController.updateUserById),
 )
 
 router.delete(
-  '/deleteUserById/:id',
+  '/userById/:id',
   verifyToken,
   verifyRoles('admin'),
   tryCatch(adminController.deleteUserById),
 )
 
 router.put(
-  '/updateUserRole/:id',
+  '/userRole/:id',
   verifyToken,
   tryCatch(adminController.updateUserRole),
 )

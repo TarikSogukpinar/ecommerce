@@ -24,7 +24,7 @@ router.get(
 )
 
 router.put(
-  '/updateCategoryById/:id',
+  '/categoryById/:id',
   tryCatch(categoryController.updateCategoryById),
 )
 

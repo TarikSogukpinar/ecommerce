@@ -7,19 +7,19 @@ import favoriteController from '../../controllers/favorite/favoriteController.js
 const router = Router()
 
 router.post(
-  '/addFavorite/:userId/:productId',
+  '/favorite/:userId/:productId',
   verifyToken,
   tryCatch(favoriteController.addFavorite),
 )
 
 router.get(
-  '/getFavoriteProducts/:userId',
+  '/favoriteProducts/:userId',
   verifyToken,
   tryCatch(favoriteController.getFavoriteProducts),
 )
 
 router.delete(
-  '/deleteFavorite/:userId/:productId',
+  '/favorite/:userId/:productId',
   tryCatch(favoriteController.deleteFavoriteProducts),
 )
 
