@@ -15,7 +15,7 @@ const options = {
     apiDocsPath: '/api/v1/',
 
   },
-  apis: ['./routes/*.js', './routes/auth/auth.routes.js'],
+  apis: ['./routes/*.js', './routes/auth/auth.routes.js', './routes/*/*.routes.js'],
 }
 
 const specs = swaggerJsDoc(options)

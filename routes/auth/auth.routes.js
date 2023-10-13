@@ -18,31 +18,26 @@ const router = Router()
  *           required: true
  *           type: string
  *           minimum: 3
- *           description: Parameter description in Markdown.
  *         - in: path
  *           name: lastName
  *           required: true
  *           type: string
  *           minimum: 3
- *           description: Parameter description in Markdown.
  *         - in: path
  *           name: email
  *           required: true
  *           type: string
  *           minimum: 3
- *           description: Parameter description in Markdown.
  *         - in: path
  *           name: password
  *           required: true
  *           type: string
  *           minimum: 3
- *           description: Parameter description in Markdown.
  *         - in: path
  *           name: confirmPassword
  *           required: true
  *           type: string
  *           minimum: 3
- *           description: Parameter description in Markdown.
  *     tags: [Auth]
  *     requestBody:
  *       content:

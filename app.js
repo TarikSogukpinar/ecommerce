@@ -30,13 +30,15 @@ app.use(cookieParser())
 app.use(helmet())
 app.use(compression())
 app.use(xss())
-app.use(mongoSanitize())
+app.use(mongoSanitize(
+    {
+      replaceWith: '_',
+    }
+))
 app.use(cors(corsOption))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.disable('x-powered-by')
 app.set('trust proxy', 1) // trust first proxy
-
-
 app.use(notFound)
 app.use(errorHandler)
 
