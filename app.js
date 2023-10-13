@@ -10,7 +10,6 @@ import mongoSanitize from 'express-mongo-sanitize'
 import swaggerUi from 'swagger-ui-express'
 
 //Custom Modules,Packages,Configs,Etc
-import connectionMongoDbDatabase from './database/connectionMongoDbDatabase.js'
 import corsOption from './helpers/cors/corsOption.js'
 import { initRoutes } from './routes/index.routes.js'
 import notFound from './errors/notFound.js'
@@ -39,7 +38,7 @@ initRoutes(app)
 
 app.use(notFound)
 app.use(errorHandler)
-connectionMongoDbDatabase()
+
 
 export const PORT = process.env.PORT || 5000
 export default app

@@ -9,7 +9,7 @@ const router = Router()
 
 /**
  * @swagger
- * /api/auth/register:
+ * /api/v1/auth/register:
  *   post:
  *     description: Registers a new user
  *     requestBody:
@@ -42,7 +42,7 @@ router.post('/register', tryCatch(registerController.registerUser))
 
 /**
  * @swagger
- * /api/auth/login:
+ * /api/v1/auth/login:
  *   post:
  *     description: Log in a user
  *     requestBody:
@@ -66,7 +66,7 @@ router.post('/login', tryCatch(loginController.loginUser))
 
 /**
  * @swagger
- * /api/auth/logout:
+ * /api/v1/auth/logout:
  *   get:
  *     description: Logs out a user
  *     parameters:
@@ -84,7 +84,7 @@ router.get('/logout', verifyToken, tryCatch(logoutController.logoutUser))
 
 /**
  * @swagger
- * /api/auth/check:
+ * /api/v1/auth/check:
  *   get:
  *     description: Health check of the service
  *     responses:

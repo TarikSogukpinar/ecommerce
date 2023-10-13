@@ -38,7 +38,7 @@ const loginUser = async (req, res) => {
 
   return res.status(StatusCodes.OK).json({
     data: user,
-    message: 'Login Succesfully!',
+    message: 'Login Successfully!',
     tokens: token,
   })
 }

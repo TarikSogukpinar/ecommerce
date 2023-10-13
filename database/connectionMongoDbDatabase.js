@@ -9,7 +9,7 @@ const connectionDatabase = async () => {
         useUnifiedTopology: true,
       })
       .then(
-        (res) => console.log(`MongoDB Connected: ${res.connection.name}`),
+        (res) => console.log(`MongoDB Connected: ${res.connection.host}`),
         mongoose.set(
           'debug',
           process.env.NODE_ENV === 'development' ? true : false,
