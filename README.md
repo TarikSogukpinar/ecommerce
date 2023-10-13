@@ -266,19 +266,19 @@ To run this project, you will need to add the following environment variables to
 
 ## Roadmap
 
-- Discount, Review, Support, Payment services will be written
+✅ Discount, Review, Support, Payment services will be written
 
 - Tests will be written for all services
 
-- Redis implementation will be done for a few services
+✅ Redis implementation will be done for a few services
 
-- Swagger interface will be added and tested for all services
+✅ Swagger interface will be added and tested for all services
 
-- Extend API's Functionality
+✅ Extend API's Functionality
 
 - Logging will be added
 
-- Some refactoring will be done & maybe bug fix
+✅ Some refactoring will be done & maybe bug fix
 
 ## Lessons Learned
 
