@@ -45,6 +45,9 @@ const createNewUser = async (req, res) => {
 }
 
 const getAllUsers = async (req, res) => {
+  /* #swagger.security = [{
+           "apiKeyAuth": []
+   }] */
   const page = Number(req.query.pageNumber) || 1
   const pageSize = 20
   const count = await User.countDocuments()

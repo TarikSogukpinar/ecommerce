@@ -115,13 +115,20 @@ router.get('/logout', verifyToken, tryCatch(logoutController.logoutUser))
  * @swagger
  * /api/v1/auth/check:
  *   get:
- *     description: Health check of the service
+ *     description: Logs out a user
  *     tags: [Auth]
+ *     parameters:
+ *       - in: cookie
+ *         name: token
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: User authentication token
  *     responses:
  *       200:
- *         description: Service is up
+ *         description: Successfully logged out
  */
-router.get('/check', (req, res) => {
+router.get('/check', verifyToken, (req, res) => {
     res.json('Health Check')
 })
 

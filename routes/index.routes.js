@@ -10,7 +10,14 @@ import supportRoutes from './support/support.routes.js'
 import discountRoutes from './discount/discount.routes.js'
 import reviewRoutes from './review/review.routes.js'
 
+
+/*
+    #swagger.security = [{
+        "apiKeyAuth": []
+    }]
+     */
 export function initRoutes(app) {
+
     app.use('/api/v1/auth', authRoutes)
     app.use('/api/v1/user', userRoutes)
     app.use('/api/v1/product', productRoutes)
