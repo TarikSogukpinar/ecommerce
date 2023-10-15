@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/admin/adminController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin/adminController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth/registerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth/registerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/tokens/cookieOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/tokens/cookieOptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/verifyTokens/verifyTokens.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/verifyTokens/verifyTokens.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin/admin.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin/admin.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/auth.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger-output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.js" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swaggerOptions.js" beforeDir="false" />
-    </list>
+    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="verify Token method updated because Swagger has problem cookie auth" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,11 +48,24 @@
       <updated>1687164451722</updated>
       <workItem from="1687164453490" duration="30000" />
       <workItem from="1697290302480" duration="82000" />
-      <workItem from="1697374966393" duration="4711000" />
+      <workItem from="1697374966393" duration="5654000" />
     </task>
+    <task id="LOCAL-00001" summary="verify Token method updated because Swagger has problem cookie auth">
+      <option name="closed" value="true" />
+      <created>1697381000279</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697381000279</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="verify Token method updated because Swagger has problem cookie auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="verify Token method updated because Swagger has problem cookie auth" />
   </component>
 </project>
