@@ -16,13 +16,13 @@ router.post(
 
 
 router.get(
-    /* #swagger.security = [{
-         "apiKeyAuth": []
-    }] */
     '/allUsers',
     verifyToken,
     // verifyRoles('admin'),
     tryCatch(adminController.getAllUsers),
+    /* #swagger.security = [{
+          "apiKeyAuth": []
+  }] */
 )
 
 

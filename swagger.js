@@ -8,7 +8,7 @@ const doc = {
     securityDefinitions: {
         apiKeyAuth: {
             type: 'apiKey',
-            in: 'cookie', // can be 'header', 'query' or 'cookie'
+            in: 'header', // can be 'header', 'query' or 'cookie'
             name: 'token', // name of the header, query parameter or cookie
             description: 'This is cookie based authentication'
         }
@@ -17,6 +17,8 @@ const doc = {
 };
 
 const outputFile = './swagger-output.json';
-const routes = ['./routes/*/*.routes.js'];
+const routes = ['./routes/*/*.*.js'];
 
-export default swaggerAutogen()(outputFile, routes, doc);
+export default swaggerAutogen()(outputFile, routes, doc).then(async () => {
+    await import('./index.js');
+});
