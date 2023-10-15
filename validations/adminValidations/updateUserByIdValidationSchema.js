@@ -12,7 +12,7 @@ const updateUserByIdValidationSchema = (body) => {
       lowerCase: 1,
       upperCase: 1,
       requirementCount: 1,
-    }).label('Password'),
+    }).label('Password').optional(),
     confirmPassword: Joi.any()
       .equal(Joi.ref('password'))
       .optional()

@@ -2,27 +2,52 @@ import swaggerAutogen from 'swagger-autogen'
 import dotenv from 'dotenv'
 
 const envFile =
-  process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+    process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
 dotenv.config({
-  path: envFile,
+    path: envFile,
 })
 
 const doc = {
-  info: {
-    title: 'E-commerce API',
-    description: 'Description',
-  },
-  securityDefinitions: {
-    apiKeyAuth: {
-      type: 'apiKey',
-      in: 'header', // can be 'header', 'query' or 'cookie'
-      name: 'token', // name of the header, query parameter or cookie
-      description: 'This is cookie based authentication',
+    info: {
+        title: 'E-commerce API',
+        description: 'API Documentation for E-commerce',
     },
-  },
-  schemes: ['http', 'https'],
-  host: process.env.SWAGGER_HOST_URL,
-  // host: 'localhost:5000/api/v1'
+    securityDefinitions: {
+        apiKeyAuth: {
+            type: 'apiKey',
+            in: 'header',
+            name: 'token',
+            description: 'This is cookie based authentication',
+        },
+    },
+    components: {
+        schemas: {
+            User: {
+                type: 'object',
+                properties: {
+                    firstName: {
+                        type: 'string',
+                    },
+                    lastName: {
+                        type: 'string',
+                    },
+                    email: {
+                        type: 'string',
+                    },
+                    password: {
+                        type: 'string',
+                    },
+                    confirmPassword: {
+                        type: 'string',
+                    },
+                },
+                required: ['id', 'firstName', 'lastName', 'email'],
+            },
+        },
+
+    },
+    schemes: ['http', 'https'],
+    host: process.env.SWAGGER_HOST_URL,
 }
 
 const outputFile = './swagger-output.json'

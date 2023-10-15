@@ -33,12 +33,10 @@ router.get(
 )
 
 router.delete(
-    '/favorite/:userId/:productId',
+    '/:userId/:productId',
     tryCatch(favoriteController.deleteFavoriteProducts),
     /*
-#swagger.security = [{
-"apiKeyAuth": []
-}]
+
 #swagger.tags = ['Favorite']
 #swagger.path = '/favorite/favoriteProducts/{userId}/{productId}'
 */

@@ -18,7 +18,7 @@ const createProductValidationSchema = (body) => {
           rating: Joi.number().min(0).max(5),
         }),
       )
-      .label('Reviews'),
+      .label('Reviews').optional(),
   })
   return schema.validate(body)
 }

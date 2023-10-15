@@ -37,7 +37,7 @@ app.use(
 )
 app.use(cors())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-app.disable('x-powered-by')
+app.disable('x-powered"-by')
 app.set('trust proxy', 1) // trust first proxy
 
 initRoutes(app)

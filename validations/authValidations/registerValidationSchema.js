@@ -3,7 +3,7 @@ import JoiPasswordComplexity from 'joi-password-complexity'
 
 const registerValidationSchema = (body) => {
   const schema = Joi.object({
-    firstName: Joi.string().required().min(3).max(50).label('User Name'),
+    firstName: Joi.string().required().min(3).max(50).label('First Name'),
     lastName: Joi.string().required().min(3).max(50).label('Last Name'),
     email: Joi.string().email().required().min(5).max(50).label('Email'),
     password: JoiPasswordComplexity({

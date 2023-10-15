@@ -40,6 +40,7 @@ router.get('/check', verifyToken, (req, res) => {
        "apiKeyAuth": []
  }]
    #swagger.tags = ['Health Check']
+    #swagger.path = '/'
     */
 })
 

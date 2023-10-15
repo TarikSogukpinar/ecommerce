@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "E-commerce API",
-    "description": "Description",
+    "description": "API Documentation for E-commerce",
     "version": "1.0.0"
   },
   "host": "localhost:5000/api/v1",
@@ -31,6 +31,39 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Register",
+            "in": "body",
+            "description": "User Register",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "confirmPassword": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "confirmPassword"
+              ]
+            }
           }
         ],
         "responses": {
@@ -113,6 +146,32 @@
             "type": "string"
           },
           {
+            "name": "Register",
+            "in": "body",
+            "description": "User Register",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "confirmPassword": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
             "name": "authorization",
             "in": "header",
             "type": "string"
@@ -173,6 +232,23 @@
             "type": "string"
           },
           {
+            "name": "Register",
+            "in": "body",
+            "description": "User Register",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roles": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "roles"
+              ]
+            }
+          },
+          {
             "name": "authorization",
             "in": "header",
             "type": "string"
@@ -195,10 +271,45 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "description": "Register a new user",
+        "parameters": [
+          {
+            "name": "Register",
+            "in": "body",
+            "description": "User Register",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "confirmPassword": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "confirmPassword"
+              ]
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "User registration successful"
           }
         }
       }
@@ -208,10 +319,33 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "description": "Login a user",
+        "parameters": [
+          {
+            "name": "Register",
+            "in": "body",
+            "description": "User Login",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
         "responses": {
           "default": {
-            "description": ""
+            "description": "User login successful"
           }
         }
       }
@@ -221,7 +355,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "description": "Logout a user",
         "parameters": [
           {
             "name": "authorization",
@@ -231,12 +365,12 @@
         ],
         "responses": {
           "default": {
-            "description": ""
+            "description": "User logout successful"
           }
         }
       }
     },
-    "/check": {
+    "/": {
       "get": {
         "tags": [
           "Health Check"
@@ -406,6 +540,27 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Register",
+            "in": "body",
+            "description": "User Register",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryName": {
+                  "type": "string"
+                },
+                "categoryDescription": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "categoryName",
+                "categoryDescription"
+              ]
+            }
           }
         ],
         "responses": {
@@ -484,6 +639,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "Update Category",
+            "in": "body",
+            "description": "Update Category",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryName": {
+                  "type": "string"
+                },
+                "categoryDescription": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "categoryName",
+                "categoryDescription"
+              ]
+            }
           }
         ],
         "responses": {
@@ -528,6 +704,23 @@
             "type": "string"
           },
           {
+            "name": "Discount",
+            "in": "body",
+            "description": "Product Discount Update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "percentage": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "percentage"
+              ]
+            }
+          },
+          {
             "name": "authorization",
             "in": "header",
             "type": "string"
@@ -556,6 +749,23 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Discount",
+            "in": "body",
+            "description": "Top Expensive Product Discount Update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "percentage": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "percentage"
+              ]
+            }
           }
         ],
         "responses": {
@@ -638,7 +848,7 @@
         ]
       }
     },
-    "/favorite/favoriteProducts/{userId}/{productId}": {
+    "/favorite/{userId}/{productId}": {
       "delete": {
         "tags": [
           "Favorite"
@@ -662,12 +872,7 @@
           "default": {
             "description": ""
           }
-        },
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ]
+        }
       }
     },
     "/order/createOrder/{productId}": {
@@ -682,6 +887,45 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "Create Order",
+            "in": "body",
+            "description": "Create Order",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customerName": {
+                  "type": "string"
+                },
+                "orderItem": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "street": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "zip": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "customerName",
+                "orderItem",
+                "address"
+              ]
+            }
           },
           {
             "name": "authorization",
@@ -983,6 +1227,51 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Create Product",
+            "in": "body",
+            "description": "Create Product",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "productName": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "brand": {
+                  "type": "string"
+                },
+                "inStock": {
+                  "type": "boolean"
+                },
+                "inventory": {
+                  "type": "number"
+                },
+                "rating": {
+                  "type": "number"
+                },
+                "reviews": {
+                  "type:": "array"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password",
+                "confirmPassword"
+              ]
+            }
           }
         ],
         "responses": {
@@ -1256,6 +1545,36 @@
           {
             "apiKeyAuth": []
           }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "firstName",
+          "lastName",
+          "email"
         ]
       }
     }
