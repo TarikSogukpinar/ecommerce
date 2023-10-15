@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="cors updated" />
+    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="swagger routes updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +48,7 @@
       <updated>1687164451722</updated>
       <workItem from="1687164453490" duration="30000" />
       <workItem from="1697290302480" duration="82000" />
-      <workItem from="1697374966393" duration="7060000" />
+      <workItem from="1697374966393" duration="7383000" />
     </task>
     <task id="LOCAL-00001" summary="verify Token method updated because Swagger has problem cookie auth">
       <option name="closed" value="true" />
@@ -90,7 +90,23 @@
       <option name="project" value="LOCAL" />
       <updated>1697383820370</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="swagger updated https status">
+      <option name="closed" value="true" />
+      <created>1697384090704</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697384090704</updated>
+    </task>
+    <task id="LOCAL-00007" summary="swagger routes updated">
+      <option name="closed" value="true" />
+      <created>1697384174327</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697384174327</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +118,8 @@
     <MESSAGE value="swagger.js updated added SWAGGER_HOST_URL" />
     <MESSAGE value="swagger.json updated" />
     <MESSAGE value="cors updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="cors updated" />
+    <MESSAGE value="swagger updated https status" />
+    <MESSAGE value="swagger routes updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="swagger routes updated" />
   </component>
 </project>
