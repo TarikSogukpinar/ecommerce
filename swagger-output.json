@@ -1024,6 +1024,53 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Update Order",
+            "in": "body",
+            "description": "Update Order",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customerName": {
+                  "type": "string"
+                },
+                "orderItem": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "orderDate": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "object",
+                  "properties": {
+                    "street": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "zip": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "customerName",
+                "orderItem",
+                "status",
+                "orderDate",
+                "address"
+              ]
+            }
           }
         ],
         "responses": {
@@ -1086,6 +1133,23 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Update Order",
+            "in": "body",
+            "description": "Update Order Status",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "status"
+              ]
+            }
           }
         ],
         "responses": {
@@ -1373,6 +1437,27 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Create Review",
+            "in": "body",
+            "description": "Create Review",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "string"
+                },
+                "rating": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "comment",
+                "rating"
+              ]
+            }
           }
         ],
         "responses": {
@@ -1429,6 +1514,39 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "Create Ticket",
+            "in": "body",
+            "description": "Create Ticket",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "response": {
+                  "type": "string"
+                },
+                "messages": {
+                    "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "description",
+                "status",
+                "response",
+                "messages"
+              ]
+            }
           }
         ],
         "responses": {
