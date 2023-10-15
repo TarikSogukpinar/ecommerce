@@ -8,7 +8,8 @@
   "host": "https://ecommerce-production-node-app.up.railway.app/api/v1",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "securityDefinitions": {
     "apiKeyAuth": {
@@ -36,7 +37,7 @@
         }
       }
     },
-    "/admin/allUsers": {
+    "/allUsers": {
       "get": {
         "description": "",
         "parameters": [

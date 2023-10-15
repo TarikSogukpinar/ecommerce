@@ -21,6 +21,7 @@ const doc = {
             description: 'This is cookie based authentication'
         }
     },
+    schemes: ['http', 'https'],
     host: process.env.SWAGGER_HOST_URL,
     // host: 'localhost:5000/api/v1'
 };
