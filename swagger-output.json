@@ -37,7 +37,7 @@
         }
       }
     },
-    "/allUsers": {
+    "/admin/allUsers": {
       "get": {
         "description": "",
         "parameters": [
