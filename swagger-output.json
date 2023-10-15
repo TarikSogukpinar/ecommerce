@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:5000/api/v1",
+  "host": "https://ecommerce-production-node-app.up.railway.app/api/v1",
   "basePath": "/",
   "schemes": [
     "http"
@@ -36,7 +36,7 @@
         }
       }
     },
-    "/admin/allUsers": {
+    "/allUsers": {
       "get": {
         "description": "",
         "parameters": [

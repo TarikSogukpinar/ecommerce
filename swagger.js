@@ -1,4 +1,12 @@
 import swaggerAutogen from "swagger-autogen";
+import dotenv from "dotenv";
+
+const envFile =
+    process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development'
+dotenv.config({
+    path: envFile,
+})
+
 
 const doc = {
     info: {
@@ -13,13 +21,11 @@ const doc = {
             description: 'This is cookie based authentication'
         }
     },
-    host: process.env.NODE_ENV === 'production' ? 'https://ecommerce-production-node-app.up.railway.app/api/v1' : 'http://localhost:5000/api/v1',
+    host: process.env.SWAGGER_HOST_URL,
     // host: 'localhost:5000/api/v1'
 };
 
 const outputFile = './swagger-output.json';
 const routes = ['./routes/*/*.*.js'];
 
-export default swaggerAutogen()(outputFile, routes, doc).then(async () => {
-    await import('./index.js');
-});
+export default swaggerAutogen()(outputFile, routes, doc);
