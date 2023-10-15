@@ -7,13 +7,40 @@ import {tryCatch} from '../../helpers/utils/tryCatch.js'
 
 const router = Router()
 
-router.post('/register', tryCatch(registerController.registerUser))
-router.post('/login', tryCatch(loginController.loginUser))
-router.get('/logout', verifyToken, tryCatch(logoutController.logoutUser))
-
+router.post(
+    '/register',
+    tryCatch(registerController.registerUser),
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.path = '/auth/register'
+     */
+)
+router.post(
+    '/login',
+    tryCatch(loginController.loginUser),
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.path = '/auth/login'
+     */
+)
+router.get(
+    '/logout',
+    verifyToken,
+    tryCatch(logoutController.logoutUser),
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.path = '/auth/logout'
+     */
+)
 
 router.get('/check', verifyToken, (req, res) => {
     res.json('Health Check')
+    /*
+     #swagger.security = [{
+       "apiKeyAuth": []
+ }]
+   #swagger.tags = ['Health Check']
+    */
 })
 
 export default router

@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-const createSupportValidationSchema = async(body) => {
+const createSupportValidationSchema = async (body) => {
   const schema = Joi.object({
     title: Joi.string().required().min(5).max(255).label('Title'),
     description: Joi.string().required().min(5).max(255).label('Description'),
@@ -17,7 +17,5 @@ const createSupportValidationSchema = async(body) => {
   })
   return schema.validate(body)
 }
-
-
 
 export default createSupportValidationSchema

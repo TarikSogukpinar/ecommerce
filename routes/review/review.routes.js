@@ -10,12 +10,26 @@ router.post(
   '/createReview/:productId',
   verifyToken,
   tryCatch(reviewController.createReview),
+    /*
+#swagger.security = [{
+     "apiKeyAuth": []
+}]
+#swagger.tags = ['Review']
+#swagger.path = '/review/createReview/{productId}'
+*/
 )
 
 router.get(
   '/reviewByProductId/:productId',
   verifyToken,
   tryCatch(reviewController.getReviewByProductId),
+    /*
+#swagger.security = [{
+  "apiKeyAuth": []
+}]
+#swagger.tags = ['Review']
+#swagger.path = '/review/reviewByProductId/{productId}'
+*/
 )
 
 export default router

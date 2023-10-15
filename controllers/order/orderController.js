@@ -8,7 +8,7 @@ import { StatusCodes } from 'http-status-codes'
 
 const createOrder = async (req, res) => {
   const { error } = createOrderValidationSchema(req.body)
-  
+
   if (error) {
     return res
       .status(StatusCodes.BAD_REQUEST)

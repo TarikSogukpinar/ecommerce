@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "ecommerce-production-node-app.up.railway.app/api/v1",
+  "host": "localhost:5000/api/v1",
   "basePath": "/",
   "schemes": [
     "http",
@@ -20,25 +20,11 @@
     }
   },
   "paths": {
-    "/createNewUser": {
+    "/admin/createNewUser": {
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
+        "tags": [
+          "Admin"
         ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/admin/allUsers": {
-      "get": {
         "description": "",
         "parameters": [
           {
@@ -59,8 +45,36 @@
         ]
       }
     },
-    "/userById/{id}": {
+    "/admin/allUsers": {
       "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/userById/{id}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
         "description": "",
         "parameters": [
           {
@@ -79,9 +93,17 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       },
       "put": {
+        "tags": [
+          "Admin"
+        ],
         "description": "",
         "parameters": [
           {
@@ -100,9 +122,17 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       },
       "delete": {
+        "tags": [
+          "Admin"
+        ],
         "description": "",
         "parameters": [
           {
@@ -121,11 +151,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/userRole/{id}": {
+    "/admin/userRole/{id}": {
       "put": {
+        "tags": [
+          "Admin"
+        ],
         "description": "",
         "parameters": [
           {
@@ -144,11 +182,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/register": {
+    "/auth/register": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -157,8 +203,11 @@
         }
       }
     },
-    "/login": {
+    "/auth/login": {
       "post": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -167,8 +216,11 @@
         }
       }
     },
-    "/logout": {
+    "/auth/logout": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
         "description": "",
         "parameters": [
           {
@@ -186,6 +238,9 @@
     },
     "/check": {
       "get": {
+        "tags": [
+          "Health Check"
+        ],
         "description": "",
         "parameters": [
           {
@@ -198,11 +253,19 @@
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/addToCartItem/{userId}/{productId}": {
+    "/cart/addToCartItem/{userId}/{productId}": {
       "post": {
+        "tags": [
+          "Cart"
+        ],
         "description": "",
         "parameters": [
           {
@@ -227,11 +290,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/userCart/{userId}": {
+    "/cart/userCart/{userId}": {
       "get": {
+        "tags": [
+          "Cart"
+        ],
         "description": "",
         "parameters": [
           {
@@ -250,9 +321,17 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       },
       "delete": {
+        "tags": [
+          "Cart"
+        ],
         "description": "",
         "parameters": [
           {
@@ -271,11 +350,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/cartItem/{userId}/{productId}": {
+    "/cart/cartItem/{userId}/{productId}": {
       "delete": {
+        "tags": [
+          "Cart"
+        ],
         "description": "",
         "parameters": [
           {
@@ -300,11 +387,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/createCategory": {
+    "/category/createCategory": {
       "post": {
+        "tags": [
+          "Category"
+        ],
         "description": "",
         "parameters": [
           {
@@ -317,11 +412,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/searchCategory/{key}": {
+    "/category/searchCategory/{key}": {
       "get": {
+        "tags": [
+          "Category"
+        ],
         "description": "",
         "parameters": [
           {
@@ -340,11 +443,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/searchCategoryById/{id}": {
+    "/category/searchCategoryById/{id}": {
       "get": {
+        "tags": [
+          "Category"
+        ],
         "description": "",
         "parameters": [
           {
@@ -361,8 +472,11 @@
         }
       }
     },
-    "/categoryById/{id}": {
+    "/category/categoryById/{id}": {
       "put": {
+        "tags": [
+          "Category"
+        ],
         "description": "",
         "parameters": [
           {
@@ -379,8 +493,11 @@
         }
       }
     },
-    "/deleteCategoryById/{id}": {
+    "/category/deleteCategoryById/{id}": {
       "delete": {
+        "tags": [
+          "Category"
+        ],
         "description": "",
         "parameters": [
           {
@@ -397,8 +514,11 @@
         }
       }
     },
-    "/productDiscount/{id}": {
+    "/discount/productDiscount/{id}": {
       "put": {
+        "tags": [
+          "Discount"
+        ],
         "description": "",
         "parameters": [
           {
@@ -417,11 +537,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/topExpensiveProductDiscount": {
+    "/discount/topExpensiveProductDiscount": {
       "put": {
+        "tags": [
+          "Discount"
+        ],
         "description": "",
         "parameters": [
           {
@@ -434,11 +562,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/favorite/{userId}/{productId}": {
+    "/favorite/favorite/{userId}/{productId}": {
       "post": {
+        "tags": [
+          "Favorite"
+        ],
         "description": "",
         "parameters": [
           {
@@ -463,9 +599,50 @@
           "default": {
             "description": ""
           }
-        }
-      },
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/favorite/favoriteProducts/{userId}": {
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/favorite/favoriteProducts/{userId}/{productId}": {
       "delete": {
+        "tags": [
+          "Favorite"
+        ],
         "description": "",
         "parameters": [
           {
@@ -485,34 +662,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/favoriteProducts/{userId}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/createOrder/{productId}": {
+    "/order/createOrder/{productId}": {
       "post": {
+        "tags": [
+          "Order"
+        ],
         "description": "",
         "parameters": [
           {
@@ -531,11 +693,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/searchOrder/{key}": {
+    "/order/searchOrder/{key}": {
       "get": {
+        "tags": [
+          "Order"
+        ],
         "description": "",
         "parameters": [
           {
@@ -554,11 +724,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/orderById/{id}": {
+    "/order/orderById/{id}": {
       "get": {
+        "tags": [
+          "Order"
+        ],
         "description": "",
         "parameters": [
           {
@@ -577,11 +755,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/order/{id}": {
+    "/order/order/{id}": {
       "put": {
+        "tags": [
+          "Order"
+        ],
         "description": "",
         "parameters": [
           {
@@ -600,11 +786,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/cancelOrder/{id}": {
+    "/order/cancelOrder/{id}": {
       "put": {
+        "tags": [
+          "Order"
+        ],
         "description": "",
         "parameters": [
           {
@@ -623,11 +817,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/orderStatus/{id}": {
+    "/order/orderStatus/{id}": {
       "put": {
+        "tags": [
+          "Order"
+        ],
         "description": "",
         "parameters": [
           {
@@ -646,11 +848,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/allProducts": {
+    "/product/allProducts": {
       "get": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "parameters": [
           {
@@ -663,11 +873,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/productById/{id}": {
+    "/product/productById/{id}": {
       "get": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "parameters": [
           {
@@ -686,9 +904,17 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       },
       "delete": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "parameters": [
           {
@@ -707,11 +933,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/searchProducts/{key}": {
+    "/product/searchProducts/{key}": {
       "get": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "parameters": [
           {
@@ -730,11 +964,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/createProduct": {
+    "/product/createProduct": {
       "post": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "parameters": [
           {
@@ -747,11 +989,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/product/{id}": {
+    "/product/product/{id}": {
       "put": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "parameters": [
           {
@@ -770,11 +1020,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/cheapestFiveProducts": {
+    "/product/cheapestFiveProducts": {
       "get": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -783,8 +1041,11 @@
         }
       }
     },
-    "/expensiveFiveProducts": {
+    "/product/expensiveFiveProducts": {
       "get": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -793,8 +1054,11 @@
         }
       }
     },
-    "/recentlyAddedProducts": {
+    "/product/recentlyAddedProducts": {
       "get": {
+        "tags": [
+          "Product"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -803,8 +1067,11 @@
         }
       }
     },
-    "/createReview/{productId}": {
+    "/review/createReview/{productId}": {
       "post": {
+        "tags": [
+          "Review"
+        ],
         "description": "",
         "parameters": [
           {
@@ -823,11 +1090,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/reviewByProductId/{productId}": {
+    "/review/reviewByProductId/{productId}": {
       "get": {
+        "tags": [
+          "Review"
+        ],
         "description": "",
         "parameters": [
           {
@@ -846,11 +1121,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/createTicket": {
+    "/support/createTicket": {
       "post": {
+        "tags": [
+          "Support"
+        ],
         "description": "",
         "parameters": [
           {
@@ -863,11 +1146,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/allTickets": {
+    "/support/allTickets": {
       "get": {
+        "tags": [
+          "Support"
+        ],
         "description": "",
         "parameters": [
           {
@@ -880,11 +1171,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/password/{id}": {
+    "/user/password/{id}": {
       "put": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -903,21 +1202,37 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/reset-password": {
+    "/user/reset-password": {
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     },
-    "/userAccountDeleted/{id}": {
+    "/user/userAccountDeleted/{id}": {
       "delete": {
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -936,7 +1251,12 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
       }
     }
   }

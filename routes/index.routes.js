@@ -10,30 +10,28 @@ import supportRoutes from './support/support.routes.js'
 import discountRoutes from './discount/discount.routes.js'
 import reviewRoutes from './review/review.routes.js'
 
-
 /*
     #swagger.security = [{
         "apiKeyAuth": []
     }]
      */
 export function initRoutes(app) {
+  app.use('/api/v1/auth', authRoutes)
+  app.use('/api/v1/user', userRoutes)
+  app.use('/api/v1/product', productRoutes)
+  app.use('/api/v1/cart', cartRoutes)
+  app.use('/api/v1/admin', adminRoutes)
+  app.use('/api/v1/category', categoryRoutes)
+  app.use('/api/v1/order', orderRoutes)
+  app.use('/api/v1/favorite', favoriteRoutes)
+  app.use('/api/v1/support', supportRoutes)
+  app.use('/api/v1/discount', discountRoutes)
+  app.use('/api/v1/review', reviewRoutes)
 
-    app.use('/api/v1/auth', authRoutes)
-    app.use('/api/v1/user', userRoutes)
-    app.use('/api/v1/product', productRoutes)
-    app.use('/api/v1/cart', cartRoutes)
-    app.use('/api/v1/admin', adminRoutes)
-    app.use('/api/v1/category', categoryRoutes)
-    app.use('/api/v1/order', orderRoutes)
-    app.use('/api/v1/favorite', favoriteRoutes)
-    app.use('/api/v1/support', supportRoutes)
-    app.use('/api/v1/discount', discountRoutes)
-    app.use('/api/v1/review', reviewRoutes)
-
-    app.all('*', (_, res) => {
-        res.status(404).json({
-            error: true,
-            message: 'Route is not found!',
-        })
+  app.all('*', (_, res) => {
+    res.status(404).json({
+      error: true,
+      message: 'Route is not found!',
     })
+  })
 }
