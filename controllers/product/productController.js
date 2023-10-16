@@ -6,7 +6,7 @@ import searchProductValidationSchema from '../../validations/productValidations/
 import {StatusCodes} from 'http-status-codes'
 import {initRedisClient} from '../../helpers/cache/redisCache.js'
 
-const redisClient = initRedisClient()
+const redisClient = await initRedisClient()
 
 const getAllProducts = async (req, res) => {
     const page = Number(req.query.pageNumber) || 1
@@ -15,6 +15,7 @@ const getAllProducts = async (req, res) => {
 
 
     let product = await redisClient.get(`products:${page}`)
+
 
     if (product) {
         return res.status(StatusCodes.OK).json({

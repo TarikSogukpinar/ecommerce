@@ -1,11 +1,11 @@
-import {createClient} from 'redis'
+import { createClient } from 'redis'
 
 async function initRedisClient() {
     try {
         const client = createClient({
             url: process.env.REDIS_HOST,
         })
-        await client.on('error', (error) =>
+        client.on('error', (error) =>
             console.log('Redis Client Connection Error', error),
         )
         await client.connect().then(() => console.log('Redis cache connected...'))
@@ -15,4 +15,4 @@ async function initRedisClient() {
     }
 }
 
-export {initRedisClient}
+export { initRedisClient }

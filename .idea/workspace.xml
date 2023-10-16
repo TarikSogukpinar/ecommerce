@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="swagger.json edited on progress">
+    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="redis implemantation is done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/support/supportController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/support/supportController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/auth.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger-output.json" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validations/supportValidations/createSupportValidationSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/validations/supportValidations/createSupportValidationSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/product/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/product/productController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/cache/redisCache.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/cache/redisCache.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,7 @@
       <workItem from="1697374966393" duration="18935000" />
       <workItem from="1697399744802" duration="6829000" />
       <workItem from="1697441087414" duration="190000" />
-      <workItem from="1697441380823" duration="2229000" />
+      <workItem from="1697441380823" duration="4832000" />
     </task>
     <task id="LOCAL-00001" summary="verify Token method updated because Swagger has problem cookie auth">
       <option name="closed" value="true" />
@@ -149,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697406644869</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="swagger.json and some paths updated">
+      <option name="closed" value="true" />
+      <created>1697443794096</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697443794096</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +173,8 @@
     <MESSAGE value="all routes updated using swagger tags" />
     <MESSAGE value="swagger.json updated" />
     <MESSAGE value="swagger.json edited on progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="swagger.json edited on progress" />
+    <MESSAGE value="swagger.json and some paths updated" />
+    <MESSAGE value="redis implemantation is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="redis implemantation is done" />
   </component>
 </project>
