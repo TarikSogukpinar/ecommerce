@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="swagger host url updated">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="swagger https updated">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/support/supportController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/support/supportController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger-output.json" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-output.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,7 @@
       <workItem from="1697374966393" duration="18935000" />
       <workItem from="1697399744802" duration="6829000" />
       <workItem from="1697441087414" duration="190000" />
-      <workItem from="1697441380823" duration="5730000" />
+      <workItem from="1697441380823" duration="6589000" />
     </task>
     <task id="LOCAL-00001" summary="verify Token method updated because Swagger has problem cookie auth">
       <option name="closed" value="true" />
@@ -169,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697446561448</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="swagger https updated">
+      <option name="closed" value="true" />
+      <created>1697448713250</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1697448713250</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +200,7 @@
     <MESSAGE value="redis implemantation is done" />
     <MESSAGE value="redis implementation is done" />
     <MESSAGE value="swagger host url updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="swagger host url updated" />
+    <MESSAGE value="swagger https updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="swagger https updated" />
   </component>
 </project>

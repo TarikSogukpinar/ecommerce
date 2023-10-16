@@ -24,7 +24,7 @@
         "tags": [
           "Admin"
         ],
-        "description": "",
+        "description": "Create User (Admin)",
         "parameters": [
           {
             "name": "authorization",
@@ -32,9 +32,9 @@
             "type": "string"
           },
           {
-            "name": "Register",
+            "name": "Create User",
             "in": "body",
-            "description": "User Register",
+            "description": "Create User",
             "required": true,
             "schema": {
               "type": "object",
@@ -82,7 +82,7 @@
         "tags": [
           "Admin"
         ],
-        "description": "",
+        "description": "Get All User (Admin)",
         "parameters": [
           {
             "name": "authorization",
@@ -107,7 +107,7 @@
         "tags": [
           "Admin"
         ],
-        "description": "",
+        "description": "Get User By Id (Admin)",
         "parameters": [
           {
             "name": "id",
@@ -222,7 +222,7 @@
         "tags": [
           "Admin"
         ],
-        "description": "",
+        "description": "Get User By Role (Admin)",
         "parameters": [
           {
             "name": "id",
@@ -374,7 +374,7 @@
         "tags": [
           "Auth"
         ],
-        "description": "",
+        "description": "Health Check",
         "responses": {
           "200": {
             "description": "OK"
@@ -392,7 +392,7 @@
         "tags": [
           "Cart"
         ],
-        "description": "",
+        "description": "Add Cart Item (Cart)",
         "parameters": [
           {
             "name": "userId",
@@ -429,7 +429,7 @@
         "tags": [
           "Cart"
         ],
-        "description": "",
+        "description": "Get User Cart Item (Cart)",
         "parameters": [
           {
             "name": "userId",
@@ -489,7 +489,7 @@
         "tags": [
           "Cart"
         ],
-        "description": "",
+        "description": "Delete Cart Item (Cart)",
         "parameters": [
           {
             "name": "userId",
@@ -526,7 +526,7 @@
         "tags": [
           "Category"
         ],
-        "description": "",
+        "description": "Category Create Category (Category)",
         "parameters": [
           {
             "name": "authorization",
@@ -572,7 +572,7 @@
         "tags": [
           "Category"
         ],
-        "description": "",
+        "description": "Search Category (Category)",
         "parameters": [
           {
             "name": "key",
@@ -603,7 +603,7 @@
         "tags": [
           "Category"
         ],
-        "description": "",
+        "description": "Search Category By Id (Category)",
         "parameters": [
           {
             "name": "id",
@@ -624,7 +624,7 @@
         "tags": [
           "Category"
         ],
-        "description": "",
+        "description": "Update Category By Id (Category)",
         "parameters": [
           {
             "name": "id",
@@ -666,7 +666,7 @@
         "tags": [
           "Category"
         ],
-        "description": "",
+        "description": "Delete Category By Id (Category)",
         "parameters": [
           {
             "name": "id",
@@ -687,7 +687,7 @@
         "tags": [
           "Discount"
         ],
-        "description": "",
+        "description": "Update Product Discount (Discount)",
         "parameters": [
           {
             "name": "id",
@@ -735,7 +735,7 @@
         "tags": [
           "Discount"
         ],
-        "description": "",
+        "description": "Update Top Expensive Product Discount (Discount)",
         "parameters": [
           {
             "name": "authorization",
@@ -777,7 +777,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "",
+        "description": "Add Favorite Product (Favorite)",
         "parameters": [
           {
             "name": "userId",
@@ -814,7 +814,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "",
+        "description": "Get Favorite Product (Favorite)",
         "parameters": [
           {
             "name": "userId",
@@ -845,7 +845,7 @@
         "tags": [
           "Favorite"
         ],
-        "description": "",
+        "description": "Delete Favorite Product (Favorite)",
         "parameters": [
           {
             "name": "userId",
@@ -872,7 +872,7 @@
         "tags": [
           "Order"
         ],
-        "description": "",
+        "description": "Create Order (Order)",
         "parameters": [
           {
             "name": "productId",
@@ -942,7 +942,7 @@
         "tags": [
           "Order"
         ],
-        "description": "",
+        "description": "Search Order (Order)",
         "parameters": [
           {
             "name": "key",
@@ -973,7 +973,7 @@
         "tags": [
           "Order"
         ],
-        "description": "",
+        "description": "Get Order By Id (Order)",
         "parameters": [
           {
             "name": "id",
@@ -1004,7 +1004,7 @@
         "tags": [
           "Order"
         ],
-        "description": "",
+        "description": "Update Order By Id (Order)",
         "parameters": [
           {
             "name": "id",
@@ -1082,7 +1082,7 @@
         "tags": [
           "Order"
         ],
-        "description": "",
+        "description": "Update Order By Id (Order)",
         "parameters": [
           {
             "name": "id",
@@ -1113,7 +1113,7 @@
         "tags": [
           "Order"
         ],
-        "description": "",
+        "description": "Update Order Status By Id (Order)",
         "parameters": [
           {
             "name": "id",
@@ -1161,7 +1161,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Get All Products (Product)",
         "parameters": [
           {
             "name": "authorization",
@@ -1186,7 +1186,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Get Product By Id (Product)",
         "parameters": [
           {
             "name": "id",
@@ -1246,7 +1246,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Get Search Products (Product)",
         "parameters": [
           {
             "name": "key",
@@ -1277,7 +1277,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Create Product (Product)",
         "parameters": [
           {
             "name": "authorization",
@@ -1347,7 +1347,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Update Product (Product)",
         "parameters": [
           {
             "name": "id",
@@ -1378,7 +1378,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Get Cheapest Five Products (Product)",
         "responses": {
           "default": {
             "description": ""
@@ -1391,7 +1391,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Get Expensive Five Products (Product)",
         "responses": {
           "default": {
             "description": ""
@@ -1404,7 +1404,7 @@
         "tags": [
           "Product"
         ],
-        "description": "",
+        "description": "Get Recently Added Products (Product)",
         "responses": {
           "default": {
             "description": ""
@@ -1417,7 +1417,7 @@
         "tags": [
           "Review"
         ],
-        "description": "",
+        "description": "Create Review (Review)",
         "parameters": [
           {
             "name": "productId",
@@ -1469,7 +1469,7 @@
         "tags": [
           "Review"
         ],
-        "description": "",
+        "description": "Get Review By Product Id (Review)",
         "parameters": [
           {
             "name": "productId",
@@ -1500,7 +1500,7 @@
         "tags": [
           "User"
         ],
-        "description": "",
+        "description": "User Account Deleted (User)",
         "parameters": [
           {
             "name": "id",
