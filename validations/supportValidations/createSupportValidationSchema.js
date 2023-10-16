@@ -9,7 +9,7 @@ const createSupportValidationSchema = async (body) => {
     messages: Joi.array()
       .items(
         Joi.object({
-          message: Joi.string().required().min(5).max(255).label('Message'),
+          message: Joi.string().optional().min(5).max(255).label('Message'),
         }),
       )
       .optional()

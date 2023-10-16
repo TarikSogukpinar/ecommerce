@@ -17,9 +17,6 @@ const createTicket = async (req, res) => {
   const createdBy = req.user.userId
   const createdRole = req.user.roles
 
-  console.log('createdRole bilgisi', createdRole)
-
-  console.log('createdBy bilgisi', createdBy)
 
   const ticket = new Ticket({
     title,
@@ -30,7 +27,7 @@ const createTicket = async (req, res) => {
     createdRole,
     messages: [
       {
-        user: createdBy,
+        // user: createdBy,
         message: messages,
       },
     ],

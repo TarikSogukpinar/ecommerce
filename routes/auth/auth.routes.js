@@ -33,14 +33,11 @@ router.get(
      */
 )
 
-router.get('/check', verifyToken, (req, res) => {
-    res.json('Health Check')
+router.get('/check',  (req, res) => {
+    res.json('Health Check is OK!')
     /*
-     #swagger.security = [{
-       "apiKeyAuth": []
- }]
-   #swagger.tags = ['Health Check']
-    #swagger.path = '/'
+   #swagger.tags = ['Auth']
+    #swagger.path = '/auth/check'
     */
 })
 

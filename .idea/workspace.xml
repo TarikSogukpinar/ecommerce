@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="all routes updated using swagger tags">
+    <list default="true" id="aed83eab-bd4a-4c20-acf1-f22f80160eb6" name="Changes" comment="swagger.json edited on progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth/registerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth/registerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/product/productController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/product/productController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/cache/redisCache.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/cache/redisCache.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/support/supportController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/support/supportController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/auth/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth/auth.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/swagger-output.json" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.js" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validations/adminValidations/updateUserByIdValidationSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/validations/adminValidations/updateUserByIdValidationSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validations/authValidations/registerValidationSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/validations/authValidations/registerValidationSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validations/productValidations/createProductValidationSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/validations/productValidations/createProductValidationSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validations/supportValidations/createSupportValidationSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/validations/supportValidations/createSupportValidationSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +30,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/ecommerce",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/honghong.me&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\tarik\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -62,6 +57,9 @@
       <workItem from="1687164453490" duration="30000" />
       <workItem from="1697290302480" duration="82000" />
       <workItem from="1697374966393" duration="18935000" />
+      <workItem from="1697399744802" duration="6829000" />
+      <workItem from="1697441087414" duration="190000" />
+      <workItem from="1697441380823" duration="2229000" />
     </task>
     <task id="LOCAL-00001" summary="verify Token method updated because Swagger has problem cookie auth">
       <option name="closed" value="true" />
@@ -135,7 +133,23 @@
       <option name="project" value="LOCAL" />
       <updated>1697392033982</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="swagger.json updated">
+      <option name="closed" value="true" />
+      <created>1697405630280</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1697405630280</updated>
+    </task>
+    <task id="LOCAL-00011" summary="swagger.json edited on progress">
+      <option name="closed" value="true" />
+      <created>1697406644869</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697406644869</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,12 +159,13 @@
     <MESSAGE value="verify Token method updated because Swagger has problem cookie auth" />
     <MESSAGE value="swagger.js updated" />
     <MESSAGE value="swagger.js updated added SWAGGER_HOST_URL" />
-    <MESSAGE value="swagger.json updated" />
     <MESSAGE value="cors updated" />
     <MESSAGE value="swagger updated https status" />
     <MESSAGE value="swagger routes updated" />
     <MESSAGE value="done!" />
     <MESSAGE value="all routes updated using swagger tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="all routes updated using swagger tags" />
+    <MESSAGE value="swagger.json updated" />
+    <MESSAGE value="swagger.json edited on progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="swagger.json edited on progress" />
   </component>
 </project>
